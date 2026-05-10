@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Ujjwal Kumar — Junior DevOps Engineer</title>
+<meta name="description" content="Ujjwal Kumar: Junior DevOps Engineer with 1,969 GitHub contributions in 12 months. CI/CD, Kubernetes, AWS, Terraform specialist."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div id="cursor"></div>
+<canvas id="bg-canvas"></canvas>
+<nav id="navbar">
+  <div class="nav-brand"><span class="mono accent">ujjwal</span><span class="mono">.dev</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#dashboard">Dashboard</a></li>
+    <li><a href="#pipeline">Pipeline</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certs">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">☰</button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#dashboard">Dashboard</a>
+  <a href="#pipeline">Pipeline</a>
+  <a href="#stack">Stack</a>
+  <a href="#projects">Projects</a>
+  <a href="#certs">Certs</a>
+  <a href="#contact">Contact</a>
+</div>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="status-badge"><span class="pulse-dot"></span>Open to Internship &amp; Full-Time DevOps Roles</div>
+    <h1 class="hero-name">Ujjwal Kumar</h1>
+    <div class="hero-subtitle mono"><span id="typed-text"></span><span class="cursor-blink">|</span></div>
+    <p class="hero-desc">Junior DevOps Engineer shipping production-grade infrastructure at velocity.<br/><strong class="accent">1,969 GitHub contributions</strong> in 12 months — proof of obsession, not tenure.</p>
+    <div class="hero-ctas">
+      <a href="mailto:iamkashyup@gmail.com" class="btn btn-primary">⚡ Hire Me</a>
+      <a href="https://github.com/Uxzwal" target="_blank" class="btn btn-secondary">View GitHub →</a>
+    </div>
+    <div class="hero-metrics">
+      <div class="metric"><div class="metric-val accent">1,969</div><div class="metric-label mono">Contributions</div></div>
+      <div class="metric-sep"></div>
+      <div class="metric"><div class="metric-val accent">6</div><div class="metric-label mono">Months Shipped</div></div>
+      <div class="metric-sep"></div>
+      <div class="metric"><div class="metric-val accent">60%</div><div class="metric-label mono">Deploy Time ↓</div></div>
+      <div class="metric-sep"></div>
+      <div class="metric"><div class="metric-val accent">99.9%</div><div class="metric-label mono">Uptime Target</div></div>
+    </div>
+  </div>
+  <div class="hero-3d" id="hero3d" aria-label="Interactive 3D cloud node cluster visualization"></div>
+</section>
+<!-- DASHBOARD -->
+<section id="dashboard">
+  <div class="section-header">
+    <span class="section-tag mono">// neural_dashboard.exe</span>
+    <h2>System Status</h2>
+    <p>Real-time metrics from 6 months of high-velocity learning</p>
+  </div>
+  <div class="dashboard-grid">
+    <div class="dash-card glass">
+      <div class="dash-label mono">SYSTEM UPTIME</div>
+      <div class="dash-val accent">LIVE</div>
+      <div class="dash-bar"><div class="dash-fill" style="width:100%"></div></div>
+    </div>
+    <div class="dash-card glass">
+      <div class="dash-label mono">DORA METRICS</div>
+      <div class="dash-val accent">ELITE</div>
+      <div class="dash-bar"><div class="dash-fill" style="width:95%"></div></div>
+    </div>
+    <div class="dash-card glass">
+      <div class="dash-label mono">IaC COVERAGE</div>
+      <div class="dash-val accent">ENABLED</div>
+      <div class="dash-bar"><div class="dash-fill" style="width:88%"></div></div>
+    </div>
+    <div class="dash-card glass">
+      <div class="dash-label mono">CONTRIBUTIONS</div>
+      <div class="dash-val accent" id="contrib-counter">0</div>
+      <div class="dash-bar"><div class="dash-fill" style="width:100%"></div></div>
+    </div>
+  </div>
+  <div class="contrib-graph-container glass">
+    <div class="contrib-header">
+      <span class="mono">github.com/Uxzwal — contribution graph</span>
+      <span class="mono accent">1,969 contributions · last 12 months</span>
+    </div>
+    <canvas id="contrib-canvas" aria-label="GitHub contribution graph visualization"></canvas>
+  </div>
+</section>
+<!-- PIPELINE -->
+<section id="pipeline">
+  <div class="section-header">
+    <span class="section-tag mono">// zero_trust_pipeline.yaml</span>
+    <h2>The Hypergraph</h2>
+    <p>Every commit scanned, signed &amp; policy-checked before deploy</p>
+  </div>
+  <div class="pipeline-container glass">
+    <div class="pipeline-flow" id="pipelineFlow">
+      <div class="pipe-stage" data-tip="Source code committed to Git. Branch protection rules enforced." data-stage="CODE">
+        <div class="pipe-icon">⬡</div><div class="pipe-label mono">CODE</div>
+      </div>
+      <div class="pipe-arrow"><div class="pipe-line"></div></div>
+      <div class="pipe-stage" data-tip="Static Application Security Testing. Detects vulnerabilities before build." data-stage="SAST">
+        <div class="pipe-icon">🔍</div><div class="pipe-label mono">SAST</div>
+      </div>
+      <div class="pipe-arrow"><div class="pipe-line"></div></div>
+      <div class="pipe-stage" data-tip="Software Bill of Materials. Every dependency tracked and audited." data-stage="SBOM">
+        <div class="pipe-icon">📋</div><div class="pipe-label mono">SBOM</div>
+      </div>
+      <div class="pipe-arrow"><div class="pipe-line"></div></div>
+      <div class="pipe-stage" data-tip="Cosign artifact signing. Cryptographic proof of supply chain integrity." data-stage="SIGN">
+        <div class="pipe-icon">🔐</div><div class="pipe-label mono">SIGN</div>
+      </div>
+      <div class="pipe-arrow"><div class="pipe-line"></div></div>
+      <div class="pipe-stage" data-tip="Open Policy Agent. Policy-as-code gates every deployment decision." data-stage="OPA">
+        <div class="pipe-icon">⚖</div><div class="pipe-label mono">OPA</div>
+      </div>
+      <div class="pipe-arrow"><div class="pipe-line"></div></div>
+      <div class="pipe-stage" data-tip="Zero-downtime deploy to Kubernetes. HPA + PDB ensures 99.9% uptime." data-stage="DEPLOY">
+        <div class="pipe-icon">🚀</div><div class="pipe-label mono">DEPLOY</div>
+      </div>
+    </div>
+    <div class="pipe-tooltip" id="pipeTooltip"></div>
+  </div>
+  <p class="pipeline-desc mono">"This is my Zero Trust Security Pipeline. Every commit is scanned, signed, and policy-checked before deploy."</p>
+</section>
+<!-- TECH STACK -->
+<section id="stack">
+  <div class="section-header">
+    <span class="section-tag mono">// tech_stack.array</span>
+    <h2>The Stack</h2>
+    <p>Tools I ship with daily</p>
+  </div>
+  <div class="stack-categories">
+    <div class="stack-cat">
+      <div class="stack-cat-label mono accent">Cloud</div>
+      <div class="stack-icons">
+        <div class="stack-icon" data-label="AWS"><div class="sicon">☁</div><span>AWS</span></div>
+        <div class="stack-icon" data-label="Azure"><div class="sicon">◈</div><span>Azure</span></div>
+        <div class="stack-icon" data-label="GCP"><div class="sicon">◉</div><span>GCP</span></div>
+      </div>
+    </div>
+    <div class="stack-cat">
+      <div class="stack-cat-label mono accent">Orchestration</div>
+      <div class="stack-icons">
+        <div class="stack-icon" data-label="Kubernetes"><div class="sicon">⎈</div><span>Kubernetes</span></div>
+        <div class="stack-icon" data-label="Docker"><div class="sicon">🐳</div><span>Docker</span></div>
+      </div>
+    </div>
+    <div class="stack-cat">
+      <div class="stack-cat-label mono accent">IaC</div>
+      <div class="stack-icons">
+        <div class="stack-icon" data-label="Terraform"><div class="sicon">◆</div><span>Terraform</span></div>
+        <div class="stack-icon" data-label="OpenTofu"><div class="sicon">◇</div><span>OpenTofu</span></div>
+      </div>
+    </div>
+    <div class="stack-cat">
+      <div class="stack-cat-label mono accent">Languages</div>
+      <div class="stack-icons">
+        <div class="stack-icon" data-label="Python"><div class="sicon">🐍</div><span>Python</span></div>
+        <div class="stack-icon" data-label="Go"><div class="sicon">◎</div><span>Go</span></div>
+        <div class="stack-icon" data-label="Rust"><div class="sicon">⚙</div><span>Rust</span></div>
+      </div>
+    </div>
+    <div class="stack-cat">
+      <div class="stack-cat-label mono accent">CI/CD</div>
+      <div class="stack-icons">
+        <div class="stack-icon" data-label="Jenkins"><div class="sicon">⚡</div><span>Jenkins</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-tag mono">// missions.log</span>
+    <h2>The Missions</h2>
+    <p>Production deployments, not tutorials</p>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card glass tilt-card">
+      <div class="project-tag mono accent">MISSION 01</div>
+      <h3 class="project-title">Project Overdrive</h3>
+      <p class="project-desc">End-to-end CI/CD pipeline using Jenkins, Docker, and Kubernetes. Reduced deployment time by <strong class="accent">60%</strong> through parallelized builds and automated rollback strategies.</p>
+      <div class="project-tags">
+        <span class="ptag">Jenkins</span><span class="ptag">Docker</span><span class="ptag">Kubernetes</span><span class="ptag">CI/CD</span>
+      </div>
+      <div class="project-metrics">
+        <div class="pm"><span class="mono accent">60%</span><span>Deploy Time ↓</span></div>
+        <div class="pm"><span class="mono accent">0</span><span>Downtime Events</span></div>
+      </div>
+      <div class="project-ctas">
+        <a href="https://github.com/Uxzwal" target="_blank" class="btn btn-sm">View Code →</a>
+      </div>
+    </div>
+    <div class="project-card glass tilt-card">
+      <div class="project-tag mono accent">MISSION 02</div>
+      <h3 class="project-title">High Availability</h3>
+      <p class="project-desc">Microservices architecture on Kubernetes with Horizontal Pod Autoscaler + Pod Disruption Budgets. Engineered for <strong class="accent">99.9% uptime</strong> with zero-downtime rolling deployments.</p>
+      <div class="project-tags">
+        <span class="ptag">Kubernetes</span><span class="ptag">HPA</span><span class="ptag">PDB</span><span class="ptag">Microservices</span>
+      </div>
+      <div class="project-metrics">
+        <div class="pm"><span class="mono accent">99.9%</span><span>Uptime</span></div>
+        <div class="pm"><span class="mono accent">Auto</span><span>Scaling</span></div>
+      </div>
+      <div class="project-ctas">
+        <a href="https://github.com/Uxzwal" target="_blank" class="btn btn-sm">View Code →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <div class="section-header">
+    <span class="section-tag mono">// achievements.json</span>
+    <h2>The Achievements</h2>
+    <p>Validated expertise across the cloud-native stack</p>
+  </div>
+  <div class="certs-grid">
+    <div class="cert-card glass"><div class="cert-icon">🏆</div><div class="cert-name">AIQrew 2025</div><div class="cert-issuer mono">Unstop</div></div>
+    <div class="cert-card glass"><div class="cert-icon">🔓</div><div class="cert-name">OpenTofu Certified</div><div class="cert-issuer mono">Linux Foundation</div></div>
+    <div class="cert-card glass"><div class="cert-icon">☸</div><div class="cert-name">Containers, K8s &amp; Istio</div><div class="cert-issuer mono">IBM</div></div>
+    <div class="cert-card glass"><div class="cert-icon">🌐</div><div class="cert-name">Microservices with Istio</div><div class="cert-issuer mono">Cognitive Class</div></div>
+    <div class="cert-card glass"><div class="cert-icon">🐳</div><div class="cert-name">Docker Essentials</div><div class="cert-issuer mono">Cognitive Class</div></div>
+    <div class="cert-card glass"><div class="cert-icon">⎈</div><div class="cert-name">Kubernetes &amp; OpenShift</div><div class="cert-issuer mono">Cognitive Class</div></div>
+  </div>
+</section>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-tag mono">// contact.init()</span>
+    <h2>Let's Build Together</h2>
+    <p>Open to internship and full-time DevOps roles. Let's connect.</p>
+  </div>
+  <div class="contact-center">
+    <div class="email-display" id="emailDisplay" onclick="copyEmail()" title="Click to copy">
+      <span>iamkashyup@gmail.com</span>
+      <span class="copy-hint mono">click to copy</span>
+    </div>
+    <div id="copyMsg" class="copy-msg mono">✓ Copied!</div>
+  </div>
+  <div class="socials-row">
+    <a href="https://github.com/Uxzwal" target="_blank" class="social-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg></a>
+    <a href="https://linkedin.com/in/uxzwal" target="_blank" class="social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+    <a href="https://medium.com/@uxzwal" target="_blank" class="social-link" aria-label="Medium"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg></a>
+    <a href="https://x.com/uxzwalll" target="_blank" class="social-link" aria-label="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+    <a href="https://discord.com/users/@uxzwal" target="_blank" class="social-link" aria-label="Discord"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028 14.09 14.09 0 001.226-1.994.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg></a>
+    <a href="https://stackoverflow.com/users/29480233/ujjwal" target="_blank" class="social-link" aria-label="Stack Overflow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.725 0l-1.72 1.289 6.005 8.04-1.72 1.29-6.006-8.04L10.565 3.87l6.005 8.04-1.72 1.29L8.845 5.16l-1.72 1.29 6.006 8.039-1.721 1.29-6.005-8.04L3.684 8.03l9.11 12.19H24V0h-8.275zM0 22.38h21.6v1.62H0v-1.62z"/></svg></a>
+  </div>
+</section>
+<footer class="footer">
+  <p class="mono">Built with obsession by <span class="accent">Ujjwal Kumar</span> · Junior DevOps Engineer · 2025</p>
+  <p class="mono small">6 months in. Shipping like a senior. The graph doesn't lie.</p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
