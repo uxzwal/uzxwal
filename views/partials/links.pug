@@ -2,19 +2,19 @@
   ul.navigation__list 
     li.navigation__list__item
       p.list__index 01.
-      a.navigation__list__link(href=pagePath("work") data-first-letter="W" data-other-letters="ork" id=work || "work") Work 
+      a.navigation__list__link(href=workHref data-first-letter="W" data-other-letters="ork" id=work || "work") Work 
 
     li.navigation__list__item
       p.list__index 02.
-      a.navigation__list__link(href=pagePath("about") data-first-letter="A" data-other-letters="bout" id=about || "about") About 
+      a.navigation__list__link(href=aboutHref data-first-letter="A" data-other-letters="bout" id=about || "about") About 
 
     li.navigation__list__item
       p.list__index 03.
-      a.navigation__list__link(href=pagePath("projects") data-first-letter="P" data-other-letters="rojects" id=projects || "projects") Projects 
+      a.navigation__list__link(href=projectsHref data-first-letter="P" data-other-letters="rojects" id=projects || "projects") Projects 
 
     li.navigation__list__item
       p.list__index 04.
-      a.navigation__list__link(href=pagePath("contact") data-first-letter="C" data-other-letters="ontact" id=contact || "contact") Contact 
+      a.navigation__list__link(href=contactHref data-first-letter="C" data-other-letters="ontact" id=contact || "contact") Contact 
 
   ul.navigation__hover__list 
     template(id="hoverHome")

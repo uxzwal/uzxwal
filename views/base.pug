@@ -4,9 +4,18 @@ block variables
   - const isStaticExport = typeof staticExport === "boolean" ? staticExport : false
   - const staticBasePath = typeof basePath === "string" && basePath.length > 0 ? basePath : "/"
   - const normalizedBasePath = staticBasePath.endsWith("/") ? staticBasePath : `${staticBasePath}/`
-  - const assetPath = (asset) => `${normalizedBasePath}${asset.replace(/^\/+/, "")}`
-  - const pagePath = (page) => isStaticExport ? (page === "home" ? "index.html" : `${page}.html`) : (page === "home" ? "/" : `/${page}`)
-  - const image = assetPath("images/preview.jpg")
+  - const homeHref = isStaticExport ? "index.html" : "/"
+  - const workHref = isStaticExport ? "work.html" : "/work"
+  - const aboutHref = isStaticExport ? "about.html" : "/about"
+  - const projectsHref = isStaticExport ? "projects.html" : "/projects"
+  - const contactHref = isStaticExport ? "contact.html" : "/contact"
+  - const appleTouchIcon = `${normalizedBasePath}apple-touch-icon.png`
+  - const favicon32 = `${normalizedBasePath}favicon-32x32.png`
+  - const favicon16 = `${normalizedBasePath}favicon-16x16.png`
+  - const manifestPath = `${normalizedBasePath}site.webmanifest`
+  - const safariPinnedTab = `${normalizedBasePath}safari-pinned-tab.svg`
+  - const image = `${normalizedBasePath}images/preview.jpg`
+  - const mainScriptPath = `${normalizedBasePath}main.js`
   - const site = "@uxzwalll"
 
 
@@ -22,11 +31,11 @@ html(lang="en")
 
     meta(name="description" content="DevOps Engineer — Containers | CI/CD | Cloud Infrastructure | Linux")
 
-    link(rel="apple-touch-icon" sizes="180x180" href=assetPath("apple-touch-icon.png"))
-    link(rel="icon" type="image/png" sizes="32x32" href=assetPath("favicon-32x32.png"))
-    link(rel="icon" type="image/png" sizes="16x16" href=assetPath("favicon-16x16.png"))
-    link(rel="manifest" href=assetPath("site.webmanifest") crossorigin="use-credentials")
-    link(rel="mask-icon" href=assetPath("safari-pinned-tab.svg") color="#ff3a00")
+    link(rel="apple-touch-icon" sizes="180x180" href=appleTouchIcon)
+    link(rel="icon" type="image/png" sizes="32x32" href=favicon32)
+    link(rel="icon" type="image/png" sizes="16x16" href=favicon16)
+    link(rel="manifest" href=manifestPath crossorigin="use-credentials")
+    link(rel="mask-icon" href=safariPinnedTab color="#ff3a00")
     meta(name="msapplication-TileColor" content="#000000")
     meta(name="theme-color" content="#ffffff")
 
@@ -60,4 +69,4 @@ html(lang="en")
     script.
       window.preloadables = !{JSON.stringify(preloadables).replace(/<\//g, "<\\/")}
       window.__STATIC_EXPORT__ = !{JSON.stringify(isStaticExport)}
-    script(src=assetPath("main.js")) 
+    script(src=mainScriptPath) 
