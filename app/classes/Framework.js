@@ -38,7 +38,16 @@ export default class Framework {
     this.content.innerHTML = html;
     this.content.setAttribute("data-template", template);
     this.createContent();
-    push && history.pushState({}, "", template);
+    if (push) {
+      const staticUrl =
+        event.currentTarget?.getAttribute("href") ??
+        event.target?.getAttribute("href");
+      history.pushState(
+        {},
+        "",
+        window.__STATIC_EXPORT__ && staticUrl ? staticUrl : template
+      );
+    }
     this.page = this.pages[this.template];
     this.page.create();
   }
