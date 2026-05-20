@@ -1,0 +1,11 @@
+[build]
+  command = "npm run frontend:build"
+  publish = "public"
+
+[dev]
+  command = "node index.js"
+  port = 2022
+
+# Note: Netlify is primarily for static sites. 
+# Since this uses Express & Pug, to deploy fully on Netlify, 
+# you would wrap the Express app in 'serverless-http' as a Netlify Function.
