@@ -1,42 +1,30 @@
-# ============================================
-# Stage 1: Build the application
-# ============================================
-FROM node:18-alpine AS builder
-
+FROM node:20-alpine AS base
 WORKDIR /app
 
-# Copy package files first for better layer caching
+FROM base AS deps
 COPY package.json package-lock.json* ./
+RUN npm ci
 
-# Install all dependencies (including devDependencies for webpack build)
-RUN npm install
-
-# Copy the rest of the application source
+FROM deps AS build
 COPY . .
+RUN npm run build
 
-# Build the frontend (webpack production build)
-RUN npm run frontend:build
+FROM base AS runtime
+ENV NODE_ENV=production
+ENV PORT=2022
+ENV NODE_OPTIONS=--max-old-space-size=256
 
-# ============================================
-# Stage 2: Production with Nginx
-# ============================================
-FROM nginx:1.25-alpine AS production
+COPY package.json package-lock.json* ./
+RUN npm ci --omit=dev && npm cache clean --force
 
-# Remove default nginx config
-RUN rm /etc/nginx/conf.d/default.conf
+COPY --from=build /app/public ./public
+COPY --from=build /app/views ./views
+COPY --from=build /app/index.js ./index.js
+COPY --from=build /app/preloadables.js ./preloadables.js
 
-# Copy custom nginx configuration
-COPY nginx/nginx.conf /etc/nginx/conf.d/
+EXPOSE 2022
 
-# Copy built assets from builder stage
-COPY --from=builder /app/public /usr/share/nginx/html
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
+  CMD node -e "require('http').get('http://127.0.0.1:2022/health', res => process.exit(res.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))"
 
-# Expose port 80
-EXPOSE 80
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget -qO- http://localhost/ || exit 1
-
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["node", "index.js"]
