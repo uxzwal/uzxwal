@@ -5,6 +5,18 @@ const preloadables = require('./preloadables');
 
 const viewsDir = path.join(__dirname, 'views', 'pages');
 const publicDir = path.join(__dirname, 'public');
+const getBasePath = () => {
+  const configuredBasePath = process.env.BASE_PATH || process.env.STATIC_BASE_PATH;
+  if (configuredBasePath) {
+    return configuredBasePath.endsWith('/') ? configuredBasePath : `${configuredBasePath}/`;
+  }
+
+  const repoName = process.env.GITHUB_REPOSITORY?.split('/')[1];
+  if (!repoName || repoName.endsWith('.github.io')) return '/';
+
+  return `/${repoName}/`;
+};
+const basePath = getBasePath();
 
 // Ensure public directory exists
 if (!fs.existsSync(publicDir)) {
@@ -20,7 +32,9 @@ pages.forEach(page => {
   try {
     const html = pug.renderFile(path.join(viewsDir, `${page}.pug`), {
       preloadables,
-      basedir: path.join(__dirname, 'views')
+      basedir: path.join(__dirname, 'views'),
+      staticExport: true,
+      basePath
     });
     
     const outPath = page === 'home' ? 'index.html' : `${page}.html`;
