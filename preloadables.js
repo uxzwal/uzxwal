@@ -4,8 +4,9 @@ preloadables.images = [
   "/images/endl_1.webp",
   "/images/endl_2.webp",
   "/images/endl_3.webp",
-  "/images/flag.jpg",
-  "/images/goody.webp",
+  "/images/flag.png",
+  "/images/ujjwal_1.png",
+  "/images/ujjwal_2.png",
   "/images/howdy_1.webp",
   "/images/howdy_2.webp",
   "/images/howdy_3.webp",
@@ -19,10 +20,10 @@ preloadables.images = [
   "/images/vsl_2.webp",
   "/images/vsl_3.webp",
 ];
-preloadables.videos = ["/images/goody.webm"];
+preloadables.videos = [];
 preloadables.textures = {
   home: "/images/baked.jpg",
-  about: "/images/flag.jpg",
+  about: "/images/flag.png",
 };
 
 preloadables.exports = {

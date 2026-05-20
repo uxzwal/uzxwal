@@ -24,7 +24,7 @@ export function bigTitle() {
   );
 
   const elements = document.querySelectorAll(
-    ".contact__credit, .contact__detail"
+    ".contact__credit, .contact__detail, .contact__form__group, .contact__button"
   );
   if (!elements.length) return tl;
 

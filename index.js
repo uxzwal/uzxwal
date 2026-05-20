@@ -30,10 +30,14 @@ app.get("/about", (req, res) => {
     preloadables,
   });
 });
-app.get("/playground", (req, res) => {
-  res.render("pages/playground", {
+app.get("/projects", (req, res) => {
+  res.render("pages/projects", {
     preloadables,
   });
+});
+// Redirect old playground URL to projects
+app.get("/playground", (req, res) => {
+  res.redirect(301, "/projects");
 });
 app.get("/contact", (req, res) => {
   res.render("pages/contact", {

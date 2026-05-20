@@ -16,7 +16,7 @@ class App extends Framework {
       home: new Home(),
       work: new Work(),
       about: new About(),
-      playground: new Playground(),
+      projects: new Playground(),
       contact: new Contact(),
     };
     this.page = this.pages[this.template];

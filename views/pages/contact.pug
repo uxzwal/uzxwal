@@ -10,8 +10,8 @@ block content
       section.contact__heading
         .contact__heading__wrapper 
           h1.contact__heading__text(data-bigTitle)
-            span.contact__heading__serif(data-alt="Say") Say
-            span.contact__heading__sans(data-alt="Hi") Hi
+            span.contact__heading__serif(data-alt="Let's Work") Let's Work
+            span.contact__heading__sans(data-alt="Together") Together
 
       section.contact__body 
         address.contact__credits 
@@ -46,9 +46,14 @@ block content
               p.contact__detail__type Instagram
               a.contact__detail__link(href="https://www.instagram.com/uxzwal/" target="_blank" rel="noopener noreferrer") @uxzwal
 
-            li.contact__detail 
-              p.contact__detail__type Gmail
-              a.contact__detail__link(href="mailto:iamkashyup@gmail.com") iamkashyup
+          form.contact__form#dynamicEmailForm
+            .contact__form__group
+              input.contact__input#contactName(type="text" placeholder="Your Name" required)
+            .contact__form__group
+              input.contact__input#contactEmail(type="email" placeholder="Your Email" required)
+            .contact__form__group
+              textarea.contact__textarea#contactMessage(placeholder="Your Message" required rows="3")
+            button.contact__button(type="submit") Send Message
 
         section.contact__canvas     
           .contact__canvas__wrapper    

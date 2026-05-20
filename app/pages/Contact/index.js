@@ -138,9 +138,33 @@ export default class Home extends Page {
   addEventListeners() {
     window.onmousemove = this.onMouseMove.bind(this);
     window.ontouchmove = this.onMouseMove.bind(this);
+    
+    // Email Form Integration
+    const form = document.getElementById("dynamicEmailForm");
+    if (form) {
+      form.addEventListener("submit", this.onFormSubmit.bind(this));
+    }
   }
+  
+  onFormSubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById("contactName").value;
+    const email = document.getElementById("contactEmail").value;
+    const message = document.getElementById("contactMessage").value;
+    
+    const subject = encodeURIComponent("Portfolio Contact");
+    const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nMessage:\n${message}`);
+    
+    window.location.href = `mailto:iamkashyup@gmail.com?subject=${subject}&body=${body}`;
+  }
+
   removeEventListeners() {
     window.onmousemove = () => {};
     window.ontouchmove = () => {};
+    
+    const form = document.getElementById("dynamicEmailForm");
+    if (form) {
+      form.removeEventListener("submit", this.onFormSubmit.bind(this));
+    }
   }
 }
