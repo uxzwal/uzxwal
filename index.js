@@ -3,7 +3,8 @@ const path = require("path");
 const preloadables = require("./preloadables");
 
 const app = express();
-const port = Number(process.env.PORT) || 2022;
+const parsedPort = Number.parseInt(process.env.PORT || "", 10);
+const port = Number.isNaN(parsedPort) ? 2022 : parsedPort;
 
 app.set("trust proxy", true);
 app.use(express.static(path.join(__dirname, "public")));

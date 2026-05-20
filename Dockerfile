@@ -25,6 +25,6 @@ COPY --from=build /app/preloadables.js ./preloadables.js
 EXPOSE 2022
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
-  CMD node -e "fetch('http://127.0.0.1:2022/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
+  CMD node -e "require('http').get('http://127.0.0.1:2022/health', res => process.exit(res.statusCode === 200 ? 0 : 1)).on('error', () => process.exit(1))"
 
 CMD ["node", "index.js"]

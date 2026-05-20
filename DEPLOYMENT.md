@@ -10,7 +10,7 @@ Internet -> Ngrok -> Nginx -> Node.js app
 
 ## Final folder structure
 ```
-/home/runner/work/uzxwal/uzxwal
+/path/to/project
 ├── Dockerfile
 ├── docker-compose.yml
 ├── .dockerignore
@@ -28,7 +28,7 @@ Internet -> Ngrok -> Nginx -> Node.js app
 
 ## Production commands
 ```bash
-cd /home/runner/work/uzxwal/uzxwal
+cd /path/to/project
 npm ci
 npm run build
 
@@ -60,7 +60,7 @@ ngrok http http://localhost:80
 3. Clone/copy project into server.
 4. Run:
    ```bash
-   cd /home/runner/work/uzxwal/uzxwal
+   cd /path/to/project
    docker compose build
    docker compose up -d
    docker compose ps
@@ -91,7 +91,7 @@ ngrok http http://localhost:80
 - Unknown routes redirect to `/` to avoid 404 on refresh.
 
 ## SSL ready
-1. Put cert files in `/home/runner/work/uzxwal/uzxwal/nginx/certs`:
+1. Put cert files in `/path/to/project/nginx/certs`:
    - `fullchain.pem`
    - `privkey.pem`
 2. Uncomment SSL server block in `nginx/nginx.conf`.
