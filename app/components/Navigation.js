@@ -8,18 +8,18 @@ const elements = {
   home: "#home, #Home",
   work: "#work, #Work",
   about: "#about, #About",
-  playground: "#playground, #Playground",
+  projects: "#projects, #Projects",
   contact: "#contact, #Contact",
   homeHover: "#hoverHome",
   workHover: "#hoverWork",
   aboutHover: "#hoverAbout",
-  playgroundHover: "#hoverPlayground",
+  projectsHover: "#hoverProjects",
   contactHover: "#hoverContact",
   navWrapper: ".navigation__wrapper",
   navHover: ".navigation__hover__list",
   hamburger: ".hamburger",
 };
-const links = ["home", "work", "about", "playground", "contact"];
+const links = ["home", "work", "about", "projects", "contact"];
 
 export default class Navigation extends Component {
   constructor() {

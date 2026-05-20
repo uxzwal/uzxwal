@@ -1,42 +1,62 @@
 # ============================================
-# Stage 1: Build the application
+# Ujjwal Kumar Portfolio - Production Dockerfile
+# Architecture: Node.js Express + Webpack + Nginx
 # ============================================
+
+# Stage 1: Build frontend assets with webpack
 FROM node:18-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files first for better layer caching
+# Copy package files first for better Docker layer caching
 COPY package.json package-lock.json* ./
 
-# Install all dependencies (including devDependencies for webpack build)
-RUN npm install
+# Install ALL dependencies (including devDeps for webpack)
+RUN npm ci --legacy-peer-deps 2>/dev/null || npm install
 
-# Copy the rest of the application source
+# Copy source code
 COPY . .
 
-# Build the frontend (webpack production build)
+# Build webpack production bundle
 RUN npm run frontend:build
 
 # ============================================
-# Stage 2: Production with Nginx
+# Stage 2: Production runtime
 # ============================================
-FROM nginx:1.25-alpine AS production
+FROM node:18-alpine AS production
 
-# Remove default nginx config
-RUN rm /etc/nginx/conf.d/default.conf
+# Set production environment
+ENV NODE_ENV=production
+ENV PORT=2022
 
-# Copy custom nginx configuration
-COPY nginx/nginx.conf /etc/nginx/conf.d/
+WORKDIR /app
 
-# Copy built assets from builder stage
-COPY --from=builder /app/public /usr/share/nginx/html
+# Copy package files
+COPY package.json package-lock.json* ./
 
-# Expose port 80
-EXPOSE 80
+# Install ONLY production dependencies
+RUN npm ci --omit=dev --legacy-peer-deps 2>/dev/null || npm install --omit=dev
+
+# Copy built public assets from builder
+COPY --from=builder /app/public ./public
+
+# Copy server files
+COPY index.js .
+COPY preloadables.js .
+COPY views ./views
+
+# Create non-root user for security
+RUN addgroup -g 1001 -S appgroup && \
+    adduser -S appuser -u 1001 -G appgroup
+
+USER appuser
+
+# Expose app port
+EXPOSE 2022
 
 # Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget -qO- http://localhost/ || exit 1
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD wget -qO- http://localhost:2022/ || exit 1
 
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Start the Express server
+CMD ["node", "index.js"]

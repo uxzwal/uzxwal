@@ -41,11 +41,16 @@
     top: unset;
     right: 4rem;
     overflow: hidden;
+    img {
+      transition: 2s $ease-out-expo;
+      filter: grayscale(0);
+    }
     video {
       transition: 2s $ease-out-expo;
       filter: grayscale(0);
     }
-    img:hover {
+    img:hover,
+    video:hover {
       filter: grayscale(1);
     }
   }
@@ -67,4 +72,20 @@
 }
 .about__media__image {
   opacity: 0;
+}
+
+// Waving flag animation
+@keyframes wave-flag {
+  0% { transform: perspective(400px) rotateY(0deg) scaleX(1); }
+  25% { transform: perspective(400px) rotateY(3deg) scaleX(1.02); }
+  50% { transform: perspective(400px) rotateY(-2deg) scaleX(0.98); }
+  75% { transform: perspective(400px) rotateY(4deg) scaleX(1.01); }
+  100% { transform: perspective(400px) rotateY(0deg) scaleX(1); }
+}
+
+.about__flag--waving {
+  img {
+    animation: wave-flag 3s ease-in-out infinite;
+    transform-origin: left center;
+  }
 }

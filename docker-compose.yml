@@ -1,17 +1,74 @@
 version: '3.8'
 
+# ============================================
+# Ujjwal Kumar Portfolio - Docker Compose
+# Architecture: Nginx (reverse proxy) → Node.js Express
+# Traffic: Internet → Ngrok → Nginx(:80) → App(:2022)
+# ============================================
+
 services:
-  portfolio:
+  # ---- Node.js Express Application ----
+  app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: ujjwal-portfolio
+    container_name: ujjwal-portfolio-app
+    restart: unless-stopped
+    expose:
+      - "2022"
+    environment:
+      - NODE_ENV=production
+      - PORT=2022
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:2022/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+          cpus: '0.50'
+        reservations:
+          memory: 128M
+          cpus: '0.25'
+    networks:
+      - portfolio-net
+
+  # ---- Nginx Reverse Proxy ----
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: ujjwal-portfolio-nginx
+    restart: unless-stopped
     ports:
       - "80:80"
-    restart: unless-stopped
+      # Uncomment below for SSL
+      # - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      # Uncomment for SSL certs
+      # - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      app:
+        condition: service_healthy
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://localhost/"]
       interval: 30s
       timeout: 3s
       retries: 3
       start_period: 5s
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+          cpus: '0.25'
+        reservations:
+          memory: 64M
+          cpus: '0.10'
+    networks:
+      - portfolio-net
+
+networks:
+  portfolio-net:
+    driver: bridge
