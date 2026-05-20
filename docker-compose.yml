@@ -1,17 +1,38 @@
-version: '3.8'
-
 services:
-  portfolio:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: ujjwal-portfolio
-    ports:
-      - "80:80"
+      target: runtime
+    environment:
+      NODE_ENV: production
+      PORT: 2022
+      NODE_OPTIONS: --max-old-space-size=256
+    expose:
+      - "2022"
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost/"]
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:2022/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
       interval: 30s
-      timeout: 3s
+      timeout: 5s
       retries: 3
-      start_period: 5s
+      start_period: 20s
+
+  nginx:
+    image: nginx:1.27-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+    depends_on:
+      app:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/nginx-health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
