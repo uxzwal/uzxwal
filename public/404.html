@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <script>
+      (function () {
+        var basePath = "/uzxwal/";
+        var routes = ["work","about","projects","contact","playground"];
+        var pathname = window.location.pathname;
+        var normalizedBasePath = basePath.endsWith('/') ? basePath : basePath + '/';
+        var relativePath = pathname.startsWith(normalizedBasePath)
+          ? pathname.slice(normalizedBasePath.length)
+          : pathname.replace(/^\//, '');
+        var cleanPath = relativePath.replace(/^\/+|\/+$/g, '');
+
+        if (!cleanPath) {
+          window.location.replace(normalizedBasePath);
+          return;
+        }
+
+        if (cleanPath === 'playground') {
+          window.location.replace(normalizedBasePath + 'projects/');
+          return;
+        }
+
+        if (routes.indexOf(cleanPath) !== -1) {
+          window.location.replace(normalizedBasePath + cleanPath + '/');
+          return;
+        }
+
+        window.location.replace(normalizedBasePath);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

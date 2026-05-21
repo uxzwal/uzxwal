@@ -67,9 +67,8 @@ This project is fully dockerized and ready for production on any VPS or local ma
 
 We've included all the necessary configuration files to deploy this project literally anywhere:
 
-- **Render / Railway / Koyeb**: Simply connect your GitHub repository. The included `render.yaml`, `railway.json`, and `Procfile` will automatically build the Docker environment.
-- **Vercel**: The `vercel.json` file automatically routes the Express backend into Vercel's serverless environment.
-- **Netlify / Cloudflare Pages / GitHub Pages**: We included a custom export script. Run `npm run build` which will compile the dynamic Pug templates into static HTML inside the `/public` folder, which can be deployed to any static host!
+- **Render / Railway / Koyeb**: Connect the repository and deploy the included Docker setup. `render.yaml`, `railway.json`, `Procfile`, and `koyeb.yaml` are included for app-hosting platforms.
+- **Vercel / Netlify / Cloudflare Pages / GitHub Pages**: Run `npm run build` to export a static `/public` directory with clean route folders, redirects, a `.nojekyll` file, and GitHub Pages-safe base paths.
 
 ---
 

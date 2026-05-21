@@ -1,0 +1,14 @@
+name: ujjwal-portfolio
+services:
+  - name: web
+    type: web
+    ports:
+      - port: 2022
+        protocol: http
+    env:
+      - key: PORT
+        value: "2022"
+    routes:
+      - path: /
+    docker:
+      dockerfile: Dockerfile
