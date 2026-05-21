@@ -4,11 +4,11 @@ block variables
   - const isStaticExport = typeof staticExport === "boolean" ? staticExport : false
   - const staticBasePath = typeof basePath === "string" && basePath.length > 0 ? basePath : "/"
   - const normalizedBasePath = staticBasePath.endsWith("/") ? staticBasePath : `${staticBasePath}/`
-  - const homeHref = isStaticExport ? "index.html" : "/"
-  - const workHref = isStaticExport ? "work.html" : "/work"
-  - const aboutHref = isStaticExport ? "about.html" : "/about"
-  - const projectsHref = isStaticExport ? "projects.html" : "/projects"
-  - const contactHref = isStaticExport ? "contact.html" : "/contact"
+  - const homeHref = isStaticExport ? normalizedBasePath : "/"
+  - const workHref = isStaticExport ? `${normalizedBasePath}work/` : "/work"
+  - const aboutHref = isStaticExport ? `${normalizedBasePath}about/` : "/about"
+  - const projectsHref = isStaticExport ? `${normalizedBasePath}projects/` : "/projects"
+  - const contactHref = isStaticExport ? `${normalizedBasePath}contact/` : "/contact"
   - const appleTouchIcon = `${normalizedBasePath}apple-touch-icon.png`
   - const favicon32 = `${normalizedBasePath}favicon-32x32.png`
   - const favicon16 = `${normalizedBasePath}favicon-16x16.png`

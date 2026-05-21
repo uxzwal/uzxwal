@@ -56,7 +56,7 @@ EXPOSE 2022
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-  CMD wget -qO- http://localhost:2022/ || exit 1
+  CMD sh -c 'wget -qO- "http://localhost:${PORT:-2022}/" || exit 1'
 
 # Start the Express server
 CMD ["node", "index.js"]

@@ -1,11 +1,32 @@
 [build]
-  command = "npm run frontend:build"
+  command = "npm run build"
   publish = "public"
 
 [dev]
   command = "node index.js"
   port = 2022
 
-# Note: Netlify is primarily for static sites. 
-# Since this uses Express & Pug, to deploy fully on Netlify, 
-# you would wrap the Express app in 'serverless-http' as a Netlify Function.
+[[redirects]]
+  from = "/playground"
+  to = "/projects/"
+  status = 301
+
+[[redirects]]
+  from = "/work"
+  to = "/work/"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/about/"
+  status = 301
+
+[[redirects]]
+  from = "/projects"
+  to = "/projects/"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/contact/"
+  status = 301
