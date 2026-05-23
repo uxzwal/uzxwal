@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, Linkedin, Instagram } from 'lucide-react';
 import Spline from '@splinetool/react-spline';
+import ErrorBoundary from './ErrorBoundary';
 
 const Preloader = ({ onFinished }) => {
   const [typedText, setTypedText] = useState('');
@@ -55,7 +56,7 @@ const Preloader = ({ onFinished }) => {
             filter: 'blur(10px)',
             transition: { duration: 1, ease: 'easeInOut' }
           }}
-          className="fixed inset-0 z-50 flex flex-col items-center justify-center dark:text-white text-slate-800 dark:bg-[#060010] bg-zinc-50"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center dark:text-white text-slate-800 dark:bg-[#000000] bg-zinc-50"
         >
           {showContent && (
             <motion.div
@@ -65,12 +66,14 @@ const Preloader = ({ onFinished }) => {
             >
               <div className="flex justify-center mb-2 mt-[-24px] md:mt-[-32px]">
                 <div className="w-[320px] h-[180px] md:w-[480px] md:h-[260px] relative overflow-hidden">
-                  <Spline
-                    scene="https://prod.spline.design/FcZ66SFMX1YbF-0I/scene.splinecode"
-                    onLoad={handleAssetLoad}
-                  />
+                  <ErrorBoundary fallback={<div className="flex items-center justify-center text-slate-400 text-xs font-cascadia bg-slate-950/20 border border-slate-800/40 rounded-xl w-[260px] h-[150px] mx-auto">3D preloader unavailable</div>}>
+                    <Spline
+                      scene="https://prod.spline.design/FcZ66SFMX1YbF-0I/scene.splinecode"
+                      onLoad={handleAssetLoad}
+                    />
+                  </ErrorBoundary>
                   {/* Hide Spline watermark */}
-                  <div className="absolute bottom-0 right-0 w-48 h-10 bg-[#060010] z-10" />
+                  <div className="absolute bottom-0 right-0 w-48 h-10 bg-[#000000] z-10" />
                 </div>
               </div>
               <motion.h1

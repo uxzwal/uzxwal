@@ -31,12 +31,12 @@
 
   /* DARK MODE OVERRIDES */
   .dark {
-    --bg-primary: #060010; /* Original Dark Background */
+    --bg-primary: #000000; /* Pure Black Background */
     --text-primary: #ffffff;
-    --text-secondary: #94a3b8; /* Slate-400 */
-    --card-bg: rgba(15, 23, 42, 0.6); /* Slate-900 with opacity */
-    --card-border: rgba(255, 255, 255, 0.1);
-    --accent: #00ffdc; /* Original Cyan Accent */
+    --text-secondary: #a1a1aa; /* Zinc-400 */
+    --card-bg: rgba(18, 18, 18, 0.85); /* Solid dark carbon card */
+    --card-border: rgba(255, 255, 255, 0.08);
+    --accent: #00ffdc; /* Keep beautiful cyan glow accents */
   }
 
   body {
@@ -55,7 +55,7 @@
 
 /* --- Gaya untuk Latar Belakang Preloader --- */
 .bg-animated {
-  background: linear-gradient(120deg, #060010 0%, #0a1a2f 40%, #1b2b4b 100%);
+  background: linear-gradient(120deg, #000000 0%, #0c0c0c 40%, #18181b 100%);
   background-size: 200% 200%;
   animation: gradientMove 12s ease-in-out infinite;
 }

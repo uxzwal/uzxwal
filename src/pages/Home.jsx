@@ -12,6 +12,7 @@ import { ButtonMovingBorder } from '../components/MovingBorderButton';
 import ProjectSection from '../components/ProjectSection';
 import Contact from '../components/Contact';
 import { useTheme } from '../contexts/ThemeContext';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 const Home = () => {
     const { theme } = useTheme();
@@ -100,7 +101,9 @@ const Home = () => {
                 {/* 3. Render Lanyard secara kondisional */}
                 <div className="hidden lg:flex flex-1 justify-center h-[600px] w-full order-first lg:order-none">
                     {is3dEnabled && (
-                        <Lanyard position={[0, 0, 15]} gravity={[0, -40, 0]} fov={18} transparent={true} />
+                        <ErrorBoundary fallback={<div className="flex items-center justify-center text-slate-400 text-sm font-cascadia border border-slate-800/30 rounded-2xl w-full h-[500px]">3D visualizer loading error</div>}>
+                            <Lanyard position={[0, 0, 15]} gravity={[0, -40, 0]} fov={18} transparent={true} />
+                        </ErrorBoundary>
                     )}
                 </div>
             </section>
@@ -117,8 +120,8 @@ const Home = () => {
                                 ABOUT <span style={{ color: theme === 'dark' ? "#fff" : "#0891b2" }}>ME</span>
                             </span>
                         </VelocityScroll>
-                        <div className={`pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r ${theme === 'dark' ? 'from-[#060010]' : 'from-slate-50'}`}></div>
-                        <div className={`pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l ${theme === 'dark' ? 'from-[#060010]' : 'from-slate-50'}`}></div>
+                        <div className={`pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r ${theme === 'dark' ? 'from-[#000000]' : 'from-slate-50'}`}></div>
+                        <div className={`pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l ${theme === 'dark' ? 'from-[#000000]' : 'from-slate-50'}`}></div>
                         <VelocityScroll defaultVelocity={-3} numRows={1} className="max-w-full">
                             <span className="font-moderniz font-bold" style={{ fontSize: "2.5rem", lineHeight: "1.1", color: theme === 'dark' ? "#00ffdc" : "#0891b2", textShadow: theme === 'dark' ? "2px 2px 0 #000754, 4px 4px 0 #4079ff, 0 4px 12px #40ffaa, 0 1px 0 #00ffdc" : "none", background: "none", WebkitBackgroundClip: "unset", WebkitTextFillColor: "unset", filter: theme === 'dark' ? 'none' : 'none', opacity: theme === 'dark' ? 1 : 0.3 }}>
                                 ABOUT <span style={{ color: theme === 'dark' ? "#fff" : "#0891b2" }}>ME</span>
@@ -140,12 +143,15 @@ const Home = () => {
                             className="md:w-1/3 flex justify-center"
                         >
                             <div className="w-full h-[420px] md:h-[530px] flex items-center justify-center relative overflow-hidden">
-                                <Spline scene="https://prod.spline.design/FcZ66SFMX1YbF-0I/scene.splinecode" />
+                                <ErrorBoundary fallback={<div className="flex items-center justify-center text-slate-400 text-sm font-cascadia border border-slate-800/30 rounded-2xl w-full h-[400px]">3D model loading error</div>}>
+                                    <Spline scene="https://prod.spline.design/FcZ66SFMX1YbF-0I/scene.splinecode" />
+                                </ErrorBoundary>
                                 {/* Hide Spline watermark */}
-                                <div className="absolute bottom-0 right-0 w-52 h-10 dark:bg-[#060010] bg-slate-50 z-10" />
+                                <div className="absolute bottom-0 right-0 w-52 h-10 dark:bg-[#000000] bg-slate-50 z-10" />
                             </div>
                         </motion.div>
                     )}
+
 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}

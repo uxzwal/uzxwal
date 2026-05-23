@@ -8,9 +8,10 @@ import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 import * as THREE from 'three';
 
 // 🧩 Ganti import glb menjadi path dari public/
-const cardGLB = '/models/card.glb';
+const cardGLB = `${import.meta.env.BASE_URL || '/'}models/card.glb`;
 // 🧩 Tetap bisa pakai png dari src
 import lanyard from '../../assets/Lanyard/lanyard.png';
+import pfpImage from '../../assets/images/Pfp.png';
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 
@@ -43,6 +44,135 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
   const segmentProps = { type: 'dynamic', canSleep: true, colliders: false, angularDamping: 4, linearDamping: 4 };
 
   const { nodes, materials } = useGLTF(cardGLB);
+  
+  // Safe geometry and materials from card.glb
+  const cardGeometry = nodes?.card?.geometry || new THREE.BoxGeometry(0.8, 1.125, 0.01);
+  const cardMaterial = materials?.base || new THREE.MeshPhysicalMaterial({ color: '#888' });
+  const clipGeometry = nodes?.clip?.geometry || new THREE.BoxGeometry(0.1, 0.1, 0.1);
+  const clipMaterial = materials?.metal || new THREE.MeshPhysicalMaterial({ color: '#555' });
+  const clampGeometry = nodes?.clamp?.geometry || new THREE.BoxGeometry(0.1, 0.1, 0.1);
+  const clampMaterial = materials?.metal || new THREE.MeshPhysicalMaterial({ color: '#555' });
+
+  const [customCardTexture, setCustomCardTexture] = useState(null);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = pfpImage;
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = 512;
+      canvas.height = 768;
+      const ctx = canvas.getContext('2d');
+      
+      // Draw background: sleek carbon dark black
+      ctx.fillStyle = '#050508';
+      ctx.fillRect(0, 0, 512, 768);
+      
+      // Subtle background grid
+      ctx.strokeStyle = 'rgba(0, 255, 220, 0.08)';
+      ctx.lineWidth = 1;
+      for (let i = 0; i < 512; i += 32) {
+        ctx.beginPath();
+        ctx.moveTo(i, 0);
+        ctx.lineTo(i, 768);
+        ctx.stroke();
+      }
+      for (let j = 0; j < 768; j += 32) {
+        ctx.beginPath();
+        ctx.moveTo(0, j);
+        ctx.lineTo(512, j);
+        ctx.stroke();
+      }
+      
+      // Outer border with neon glowing cyber gradient
+      const grad = ctx.createLinearGradient(0, 0, 512, 768);
+      grad.addColorStop(0, '#00ffdc');
+      grad.addColorStop(0.5, '#4079ff');
+      grad.addColorStop(1, '#00ffaac4');
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 14;
+      ctx.strokeRect(7, 7, 498, 754);
+      
+      // Draw huge rotated vertical "UJJWAL" text on the right side
+      ctx.save();
+      ctx.translate(435, 384);
+      ctx.rotate(Math.PI / 2);
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 78px "Moderniz", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('UJJWAL', 0, 0);
+      ctx.restore();
+
+      // Top logo bar
+      ctx.fillStyle = '#00ffdc';
+      ctx.font = 'bold 22px "Cascadia Code", monospace';
+      ctx.fillText('⚡ DEVOPS INFRA', 36, 60);
+
+      // Draw rounded profile photo frame
+      ctx.save();
+      const pfpSize = 250;
+      const pfpX = 50;
+      const pfpY = 120;
+      
+      // Draw circular clip path
+      ctx.beginPath();
+      ctx.arc(pfpX + pfpSize / 2, pfpY + pfpSize / 2, pfpSize / 2, 0, Math.PI * 2);
+      ctx.closePath();
+      ctx.clip();
+      
+      // Draw profile image
+      ctx.drawImage(img, pfpX, pfpY, pfpSize, pfpSize);
+      ctx.restore();
+      
+      // Circular glowing border around photo
+      ctx.strokeStyle = '#00ffdc';
+      ctx.lineWidth = 6;
+      ctx.beginPath();
+      ctx.arc(pfpX + pfpSize / 2, pfpY + pfpSize / 2, pfpSize / 2, 0, Math.PI * 2);
+      ctx.stroke();
+
+      // Bottom pill name badge
+      const pillX = 40;
+      const pillY = 470;
+      const pillW = 280;
+      const pillH = 150;
+      
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.95)';
+      ctx.beginPath();
+      if (typeof ctx.roundRect === 'function') {
+        ctx.roundRect(pillX, pillY, pillW, pillH, 20);
+      } else {
+        ctx.rect(pillX, pillY, pillW, pillH);
+      }
+      ctx.fill();
+      
+      // Display "UJJWAL" inside name badge
+      ctx.fillStyle = '#000000';
+      ctx.font = 'bold 38px "Cascadia Code", monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('UJJWAL', pillX + pillW / 2, pillY + 55);
+      
+      // Sub role pill inside badge
+      ctx.fillStyle = '#000000';
+      ctx.beginPath();
+      if (typeof ctx.roundRect === 'function') {
+        ctx.roundRect(pillX + 15, pillY + 80, pillW - 30, 48, 12);
+      } else {
+        ctx.rect(pillX + 15, pillY + 80, pillW - 30, 48);
+      }
+      ctx.fill();
+      
+      ctx.fillStyle = '#00ffdc';
+      ctx.font = 'bold 18px "Cascadia Code", monospace';
+      ctx.fillText('DEVOPS ENGINEER', pillX + pillW / 2, pillY + 110);
+      
+      const tex = new THREE.CanvasTexture(canvas);
+      tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+      tex.repeat.set(1, 1);
+      setCustomCardTexture(tex);
+    };
+  }, []);
+
   const texture = useTexture(lanyard);
   const [curve] = useState(() => new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()]));
   const [dragged, drag] = useState(false);
@@ -70,32 +200,55 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
   }, []);
 
   useFrame((state, delta) => {
-    if (dragged) {
+    if (dragged && card.current) {
       vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
       dir.copy(vec).sub(state.camera.position).normalize();
       vec.add(dir.multiplyScalar(state.camera.position.length()));
       [card, j1, j2, j3, fixed].forEach((ref) => ref.current?.wakeUp());
-      card.current?.setNextKinematicTranslation({ x: vec.x - dragged.x, y: vec.y - dragged.y, z: vec.z - dragged.z });
+      
+      if (typeof card.current.setNextKinematicTranslation === 'function') {
+        card.current.setNextKinematicTranslation({ x: vec.x - dragged.x, y: vec.y - dragged.y, z: vec.z - dragged.z });
+      }
     }
-    if (fixed.current) {
+    
+    if (fixed.current && j1.current && j2.current && j3.current && card.current) {
       [j1, j2].forEach((ref) => {
-        if (!ref.current.lerped) ref.current.lerped = new THREE.Vector3().copy(ref.current.translation());
-        const clampedDistance = Math.max(0.1, Math.min(1, ref.current.lerped.distanceTo(ref.current.translation())));
-        ref.current.lerped.lerp(ref.current.translation(), delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed)));
+        if (!ref.current) return;
+        const translation = typeof ref.current.translation === 'function' ? ref.current.translation() : { x: 0, y: 0, z: 0 };
+        if (!ref.current.lerped) ref.current.lerped = new THREE.Vector3(translation.x, translation.y, translation.z);
+        const currentPos = new THREE.Vector3(translation.x, translation.y, translation.z);
+        const clampedDistance = Math.max(0.1, Math.min(1, ref.current.lerped.distanceTo(currentPos)));
+        ref.current.lerped.lerp(currentPos, delta * (minSpeed + clampedDistance * (maxSpeed - minSpeed)));
       });
-      curve.points[0].copy(j3.current.translation());
-      curve.points[1].copy(j2.current.lerped);
-      curve.points[2].copy(j1.current.lerped);
-      curve.points[3].copy(fixed.current.translation());
-      band.current.geometry.setPoints(curve.getPoints(32));
-      ang.copy(card.current.angvel());
-      rot.copy(card.current.rotation());
-      card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
+
+      const j3Pos = typeof j3.current.translation === 'function' ? j3.current.translation() : { x: 0, y: 0, z: 0 };
+      const j2Lerped = j2.current.lerped || new THREE.Vector3();
+      const j1Lerped = j1.current.lerped || new THREE.Vector3();
+      const fixedPos = typeof fixed.current.translation === 'function' ? fixed.current.translation() : { x: 0, y: 0, z: 0 };
+
+      curve.points[0].copy(new THREE.Vector3(j3Pos.x, j3Pos.y, j3Pos.z));
+      curve.points[1].copy(j2Lerped);
+      curve.points[2].copy(j1Lerped);
+      curve.points[3].copy(new THREE.Vector3(fixedPos.x, fixedPos.y, fixedPos.z));
+
+      if (band.current && band.current.geometry) {
+        band.current.geometry.setPoints(curve.getPoints(32));
+      }
+
+      if (typeof card.current.angvel === 'function' && typeof card.current.rotation === 'function') {
+        const cardAng = card.current.angvel();
+        const cardRot = card.current.rotation();
+        ang.copy(new THREE.Vector3(cardAng.x, cardAng.y, cardAng.z));
+        rot.copy(new THREE.Vector3(cardRot.x, cardRot.y, cardRot.z));
+        card.current.setAngvel({ x: ang.x, y: ang.y - rot.y * 0.25, z: ang.z });
+      }
     }
   });
 
   curve.curveType = 'chordal';
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+  if (texture) {
+    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+  }
 
   return (
     <>
@@ -117,13 +270,25 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
             position={[0, -1.2, -0.05]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
-            onPointerUp={(e) => (e.target.releasePointerCapture(e.pointerId), drag(false))}
-            onPointerDown={(e) => (e.target.setPointerCapture(e.pointerId), drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation()))))}>
-            <mesh geometry={nodes.card.geometry}>
-              <meshPhysicalMaterial map={materials.base.map} map-anisotropy={16} clearcoat={1} clearcoatRoughness={0.15} roughness={0.9} metalness={0.8} />
+            onPointerUp={(e) => {
+              if (typeof e.target.releasePointerCapture === 'function') {
+                e.target.releasePointerCapture(e.pointerId);
+              }
+              drag(false);
+            }}
+            onPointerDown={(e) => {
+              if (typeof e.target.setPointerCapture === 'function') {
+                e.target.setPointerCapture(e.pointerId);
+              }
+              if (card.current && typeof card.current.translation === 'function') {
+                drag(new THREE.Vector3().copy(e.point).sub(vec.copy(card.current.translation())));
+              }
+            }}>
+            <mesh geometry={cardGeometry}>
+              <meshPhysicalMaterial map={customCardTexture || cardMaterial.map} map-anisotropy={16} clearcoat={1} clearcoatRoughness={0.15} roughness={0.9} metalness={0.8} />
             </mesh>
-            <mesh geometry={nodes.clip.geometry} material={materials.metal} material-roughness={0.3} />
-            <mesh geometry={nodes.clamp.geometry} material={materials.metal} />
+            <mesh geometry={clipGeometry} material={clipMaterial} material-roughness={0.3} />
+            <mesh geometry={clampGeometry} material={clampMaterial} />
           </group>
         </RigidBody>
       </group>
