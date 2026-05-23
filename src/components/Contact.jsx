@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaGithub,
-  FaInstagram,
-  FaTiktok,
+  FaLinkedin,
+  FaGlobe,
   FaPaperPlane,
   FaUser,
   FaEnvelope,
@@ -15,7 +15,6 @@ import {
   FaCog,
   FaThumbtack
 } from 'react-icons/fa';
-import { SiTiktok } from 'react-icons/si';
 import AdminDashboard from './AdminDashboard';
 import AdminLogin from './AdminLogin';
 import { useAdmin } from '../contexts/AdminContext';
@@ -49,20 +48,16 @@ const Contact = () => {
     fetchComments();
   }, []);
 
-  // Fetch comments dari database
   const fetchComments = async () => {
+    if (!supabase) return;
     try {
       const { data, error } = await supabase
         .from('comments')
         .select('*')
-        .order('is_pinned', { ascending: false })  // Pinned comments first
-        .order('created_at', { ascending: false }); // Then by date
-
+        .order('is_pinned', { ascending: false })
+        .order('created_at', { ascending: false });
       if (error) throw error;
-
       if (data) {
-        console.log('✅ Comments fetched from database:', data.length);
-        // Transform data dari Supabase ke format yang dipakai component
         const transformedComments = data.map(comment => ({
           id: comment.id,
           name: comment.name,
@@ -70,52 +65,32 @@ const Contact = () => {
           photo: comment.photo_url || `https://ui-avatars.com/api/?name=${encodeURIComponent(comment.name)}&background=00ffdc&color=000754&size=100`,
           timestamp: comment.created_at,
           likes: comment.likes || 0,
-          isPinned: comment.is_pinned || false  // ✨ NEW: Pin status
+          isPinned: comment.is_pinned || false
         }));
         setComments(transformedComments);
       }
     } catch (error) {
       console.error('Error fetching comments:', error);
-      // Fallback ke localStorage jika gagal
       const savedComments = localStorage.getItem('portfolioComments');
-      if (savedComments) {
-        setComments(JSON.parse(savedComments));
-      }
+      if (savedComments) setComments(JSON.parse(savedComments));
     }
   };
 
-  // Handle contact form
   const handleContactSubmit = async (e) => {
     e.preventDefault();
     setIsSubmittingContact(true);
-
     try {
-      // Save message to Supabase
-      const { data, error } = await supabase
-        .from('contact_messages')
-        .insert([
-          {
-            name: contactForm.name,
-            email: contactForm.email,
-            message: contactForm.message,
-            status: 'unread'
-          }
-        ])
-        .select();
-
-      if (error) {
-        console.error('Supabase error:', error);
-        throw error;
+      if (supabase) {
+        const { error } = await supabase
+          .from('contact_messages')
+          .insert([{ name: contactForm.name, email: contactForm.email, message: contactForm.message, status: 'unread' }]);
+        if (error) throw error;
       }
-
-      console.log('Message saved to database:', data);
-
-      alert('Pesan berhasil dikirim! Terima kasih telah menghubungi saya. 📧');
+      alert('Message sent successfully! Thank you for reaching out. 📧');
       setContactForm({ name: '', email: '', message: '' });
-
     } catch (error) {
       console.error('Error submitting contact form:', error);
-      alert(`Gagal mengirim pesan: ${error.message}. Pastikan koneksi database aktif.`);
+      alert(`Failed to send message: ${error.message}`);
     } finally {
       setIsSubmittingContact(false);
     }
@@ -137,46 +112,23 @@ const Contact = () => {
     }
   };
 
-  // Handle comment submit
   const handleCommentSubmit = async (e) => {
     e.preventDefault();
     if (!commentForm.name.trim() || !commentForm.message.trim()) return;
-
     setIsSubmittingComment(true);
-
     try {
-      // Save comment to Supabase
-      const { data, error } = await supabase
-        .from('comments')
-        .insert([
-          {
-            name: commentForm.name,
-            message: commentForm.message,
-            photo_url: commentForm.photoPreview || null,
-            likes: 0
-          }
-        ])
-        .select();
-
-      if (error) {
-        console.error('Supabase error:', error);
-        throw error;
+      if (supabase) {
+        const { error } = await supabase
+          .from('comments')
+          .insert([{ name: commentForm.name, message: commentForm.message, photo_url: commentForm.photoPreview || null, likes: 0 }]);
+        if (error) throw error;
+        await fetchComments();
       }
-
-      console.log('Comment saved to database:', data);
-
-      // Refresh comments list dari database
-      await fetchComments();
-
-      // Reset form
       setCommentForm({ name: '', message: '', photo: null, photoPreview: null });
-
-      // Show success message
-      alert('Comment berhasil dipost! 🎉');
-
+      alert('Comment posted successfully! 🎉');
     } catch (error) {
       console.error('Error submitting comment:', error);
-      alert(`Gagal posting comment: ${error.message}. Pastikan koneksi database aktif.`);
+      alert(`Failed to post comment: ${error.message}`);
     } finally {
       setIsSubmittingComment(false);
     }
@@ -226,18 +178,18 @@ const Contact = () => {
       hoverColor: 'hover:shadow-gray-500/25'
     },
     {
-      name: 'Instagram',
-      icon: <FaInstagram />,
-      url: 'https://instagram.com/uxzwal',
-      color: 'from-pink-500 to-purple-600',
-      hoverColor: 'hover:shadow-pink-500/25'
+      name: 'LinkedIn',
+      icon: <FaLinkedin />,
+      url: 'https://linkedin.com/in/uxzwal',
+      color: 'from-blue-600 to-blue-800',
+      hoverColor: 'hover:shadow-blue-500/25'
     },
     {
-      name: 'TikTok',
-      icon: <SiTiktok />,
-      url: 'https://tiktok.com/@uxzwal',
-      color: 'from-black to-red-600',
-      hoverColor: 'hover:shadow-red-500/25'
+      name: 'Portfolio',
+      icon: <FaGlobe />,
+      url: 'https://uxzwal.github.io/uzxwal',
+      color: 'from-cyan-600 to-teal-700',
+      hoverColor: 'hover:shadow-cyan-500/25'
     }
   ];
 
@@ -268,7 +220,7 @@ const Contact = () => {
             <span className="dark:text-white text-slate-800">TOUCH</span>
           </h2>
           <p className="text-xl dark:text-slate-400 text-slate-600 font-cascadia">
-            Mari berkolaborasi dan ciptakan sesuatu yang amazing!
+            Let's collaborate and create something amazing!
           </p>
 
           {/* Admin Button - positioned top right */}
@@ -305,8 +257,8 @@ const Contact = () => {
                     <FaPaperPlane className="text-white text-xl" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold dark:text-white text-slate-900">Hubungi Saya</h3>
-                    <p className="dark:text-slate-400 text-slate-600">Ada yang ingin didiskusikan? Kirim pesan ke saya!</p>
+                    <h3 className="text-2xl font-bold dark:text-white text-slate-900">Contact Me</h3>
+                    <p className="dark:text-slate-400 text-slate-600">Have something to discuss? Send me a message!</p>
                   </div>
                 </div>
 
@@ -316,7 +268,7 @@ const Contact = () => {
                       <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 dark:text-slate-400 text-slate-400 group-focus-within:text-cyan-600 dark:group-focus-within:text-cyan-400 transition-colors duration-300" />
                       <input
                         type="text"
-                        placeholder="Nama Anda"
+                        placeholder="Your Name"
                         value={contactForm.name}
                         onChange={(e) => setContactForm(prev => ({ ...prev, name: e.target.value }))}
                         className="w-full pl-12 pr-4 py-4 dark:bg-slate-800/50 bg-slate-50 border dark:border-slate-600/50 border-slate-200 rounded-xl dark:text-white text-slate-800 dark:placeholder-slate-400 placeholder-slate-400 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 dark:focus:ring-cyan-400/20 transition-all duration-300"
@@ -330,7 +282,7 @@ const Contact = () => {
                       <FaEnvelope className="absolute left-4 top-1/2 transform -translate-y-1/2 dark:text-slate-400 text-slate-500 group-focus-within:text-cyan-400 transition-colors duration-300" />
                       <input
                         type="email"
-                        placeholder="Email Anda"
+                        placeholder="Your Email"
                         value={contactForm.email}
                         onChange={(e) => setContactForm(prev => ({ ...prev, email: e.target.value }))}
                         className="w-full pl-12 pr-4 py-4 dark:bg-slate-800/50 bg-slate-50 border dark:border-slate-600/50 border-slate-200 rounded-xl dark:text-white text-slate-900 dark:placeholder-slate-400 placeholder-slate-500 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
@@ -343,7 +295,7 @@ const Contact = () => {
                     <div className="relative">
                       <FaComment className="absolute left-4 top-6 dark:text-slate-400 text-slate-500 group-focus-within:text-cyan-400 transition-colors duration-300" />
                       <textarea
-                        placeholder="Pesan Anda"
+                        placeholder="Your Message"
                         rows="4"
                         value={contactForm.message}
                         onChange={(e) => setContactForm(prev => ({ ...prev, message: e.target.value }))}
@@ -365,7 +317,7 @@ const Contact = () => {
                     ) : (
                       <>
                         <FaPaperPlane />
-                        <span>Kirim Pesan</span>
+                        <span>Send Message</span>
                       </>
                     )}
                   </motion.button>
@@ -376,7 +328,7 @@ const Contact = () => {
             {/* Divider */}
             <div className="flex items-center gap-4">
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-slate-600 to-transparent"></div>
-              <span className="text-slate-400 font-semibold">atau</span>
+              <span className="text-slate-400 font-semibold">or</span>
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-slate-600 to-transparent"></div>
             </div>
 
@@ -596,7 +548,7 @@ const Contact = () => {
       </AnimatePresence>
 
       {/* Custom Scrollbar Styles */}
-      <style jsx>{`
+      <style>{`
         .custom-scrollbar::-webkit-scrollbar {
           width: 6px;
         }

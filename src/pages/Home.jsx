@@ -30,9 +30,9 @@ const Home = () => {
     };
 
     const stats = [
-        { icon: <FaCode />, value: "13", title: "TOTAL PROJECTS", description: "Innovative web solutions crafted" },
-        { icon: <FaCertificate />, value: "13", title: "CERTIFICATES", description: "Professional skills validated" },
-        { icon: <FaGlobe />, value: "3", title: "YEARS OF EXPERIENCE", description: "Continuous learning journey" },
+        { icon: <FaCode />, value: "5+", title: "IBM CERTIFICATES", description: "Containers, Kubernetes & Istio" },
+        { icon: <FaCertificate />, value: "3+", title: "DEVOPS PROJECTS", description: "CI/CD, Docker & Cloud" },
+        { icon: <FaGlobe />, value: "2", title: "YEARS OF PRACTICE", description: "Cloud-native & DevOps journey" },
     ];
 
     return (
@@ -79,7 +79,7 @@ const Home = () => {
                         <GradientText colors={["#40f2ffff", "#4079ff", "#40fffcff", "#4079ff", "#40f9ffff"]} animationSpeed={3} className="custom-class font-cascadia font-bold" />
                     </motion.div>
                     <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.55, ease: "easeOut" }}>
-                        <TextGenerateEffect words={'I craft responsive and visually engaging websites using React, Tailwind CSS, and modern web technologies.'} />
+                        <TextGenerateEffect words={'Containers | CI/CD | Cloud Infrastructure | Linux'} />
                     </motion.div>
                     <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}>
                         <Skills />
@@ -139,8 +139,10 @@ const Home = () => {
                             transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
                             className="md:w-1/3 flex justify-center"
                         >
-                            <div className="w-full h-[420px] md:h-[530px] flex items-center justify-center">
+                            <div className="w-full h-[420px] md:h-[530px] flex items-center justify-center relative overflow-hidden">
                                 <Spline scene="https://prod.spline.design/FcZ66SFMX1YbF-0I/scene.splinecode" />
+                                {/* Hide Spline watermark */}
+                                <div className="absolute bottom-0 right-0 w-52 h-10 dark:bg-[#060010] bg-slate-50 z-10" />
                             </div>
                         </motion.div>
                     )}
@@ -155,10 +157,10 @@ const Home = () => {
                         <p className="text-2xl dark:text-gray-300 text-slate-500 font-moderniz my" style={{ textShadow: theme === 'dark' ? "2px 2px 0 #000754, 4px 4px 0 #4079ff, 0 4px 12px #40ffaa, 0 1px 0 #00ffdc" : "none" }}>Hello, I'm</p>
                         <h3 className="text-4xl font-bold dark:text-white text-slate-900 my-2 font-moderniz" style={{ textShadow: theme === 'dark' ? "2px 2px 0 #000754, 4px 4px 0 #4079ff, 0 4px 12px #40ffaa, 0 1px 0 #00ffdc" : "none" }}>Ujjwal Kumar</h3>
                         <p className="dark:text-white/80 text-slate-600 leading-relaxed mt-4 font-cascadia text-justify">
-                            Saya adalah mahasiswa Teknik Informatika di Universitas Indo Global Mandiri Palembang yang memiliki minat besar dalam pengembangan Full Stack dan teknologi web modern. Saya selalu bersemangat untuk belajar hal baru dan menciptakan solusi digital yang inovatif.
+                            DevOps Engineer with hands-on experience in containerization, CI/CD automation, and cloud-native technologies. Proficient in Docker, GitHub Actions, Linux administration, and Kubernetes fundamentals, with IBM-certified expertise in Containers, Kubernetes, and Istio on IBM Cloud.
                         </p>
                         <div className="my-6 dark:bg-slate-900/50 bg-slate-50 border-l-4 dark:border-[#00ffdc] border-cyan-600 p-4 rounded-r-lg italic dark:text-white/70 text-slate-700 font-cascadia dark:shadow-none shadow-md">
-                            "Whoever strives shall succeed."
+                            "Automate everything. Reliable infrastructure is the foundation of great software."
                         </div>
                         <div className="flex flex-row sm:flex-row gap-4 mt-8 justify-center md:justify-start items-center">
                             <ButtonMovingBorder as="a" href="/cv.pdf" download duration={3000} borderRadius="0.75rem" className="dark:bg-slate-900/[0.8] bg-white border dark:border-slate-800 border-slate-200 dark:text-white text-slate-800 font-semibold flex items-center justify-center gap-2 transition-all duration-300 dark:shadow-none shadow-md hover:shadow-lg dark:hover:shadow-[0_0_24px_8px_#40ffaa]">

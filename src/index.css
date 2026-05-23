@@ -106,3 +106,13 @@
     animation: reveal 2s linear forwards;
   }
 }
+
+/* ---- Hide Spline "Built with Spline" watermark ---- */
+a[href*="spline.design"],
+div[id="logo"],
+spline-viewer::part(logo),
+#spline-watermark {
+  display: none !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}

@@ -20,166 +20,95 @@ import { supabase } from '../lib/supabase';
 // ===================================
 const dummyProjects = [
   {
-    title: "Portfolio v2",
-    description: "Website portofolio pribadi yang dibangun dengan React, Next.js, dan Tailwind CSS, di-deploy di Vercel.",
-    tech: ["Next.js", "React", "TailwindCSS", "Framer Motion"],
-    link: "https://github.com/username/portfolio",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
+    title: "Dockerized Web App",
+    description: "Engineered optimized Dockerfiles leveraging layer caching, .dockerignore, and strategic COPY ordering, reducing image build times by ~30%.",
+    tech: ["Docker", "Node.js", "Nginx"],
+    link: "https://github.com/uxzwal",
+    image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=2070&auto=format&fit=crop",
     category: "Web/Apps",
   },
   {
-    title: "E-Commerce API",
-    description: "RESTful API untuk platform e-commerce dengan fitur otentikasi, manajemen produk, dan transaksi.",
-    tech: ["Node.js", "Express", "MongoDB", "JWT"],
-    link: "https://github.com/username/ecommerce-api",
-    image: "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=2072&auto=format&fit=crop",
+    title: "Multi-Container Compose Stack",
+    description: "Designed and deployed multi-container application environments using Docker Compose, enabling consistent local development setups across 3+ interconnected containers.",
+    tech: ["Docker Compose", "PostgreSQL", "Redis"],
+    link: "https://github.com/uxzwal",
+    image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=2070&auto=format&fit=crop",
     category: "Web/Apps",
   },
   {
-    title: "UI Design System",
-    description: "Merancang komponen UI yang reusable dan konsisten untuk aplikasi web menggunakan Figma.",
-    tech: ["Figma", "Storybook"],
-    link: "#",
-    image: "https://images.unsplash.com/photo-1600132806378-62402124d9e0?q=80&w=2070&auto=format&fit=crop",
+    title: "GitHub Actions CI/CD Pipeline",
+    description: "Automated build and integration workflows using GitHub Actions CI/CD pipelines, triggering Docker builds on every push and reducing manual deployment effort to near zero.",
+    tech: ["GitHub Actions", "Docker", "YAML"],
+    link: "https://github.com/uxzwal",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2070&auto=format&fit=crop",
     category: "Web/Apps",
-  },
-  {
-    title: "3D Product Visualization",
-    description: "Desain 3D interaktif untuk showcase produk menggunakan Spline dan Blender.",
-    tech: ["Spline", "Blender"],
-    link: "#",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop",
-    category: "3D Design",
-  },
-  {
-    title: "Animated 3D Landing",
-    description: "Landing page dengan elemen 3D animasi untuk branding modern.",
-    tech: ["Spline", "Three.js"],
-    link: "#",
-    image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?q=80&w=2070&auto=format&fit=crop",
-    category: "3D Design",
   },
 ];
 
 // ===================================
-// DATA SERTIFIKAT ZAIN AHMAD FAHREZI
+// CERTIFICATES DATA - UJJWAL KUMAR
 // ===================================
 const userCertificates = [
   {
-    title: "Belajar Membuat Aplikasi Web dengan React",
-    issuer: "Dicoding Indonesia",
-    date: "Des 2024",
-    link: "/certificates/Belajar Membuat Aplikasi Web dengan React.pdf",
-    image: "/certificate-images/Belajar Membuat Aplikasi Web dengan React.jpg",
+    title: "Docker Essentials: A Developer Introduction",
+    issuer: "IBM",
+    date: "2024",
+    link: "#",
+    image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?q=80&w=1000",
   },
   {
-    title: "Belajar Dasar Pemrograman JavaScript",
-    issuer: "Dicoding Indonesia",
-    date: "Des 2024",
-    link: "/certificates/Belajar Dasar Pemrograman JavaScript.pdf",
-    image: "/certificate-images/Belajar Dasar Pemrograman JavaScript.jpg",
+    title: "Introduction to Containers, Kubernetes, and OpenShift",
+    issuer: "IBM",
+    date: "2024",
+    link: "#",
+    image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?q=80&w=1000",
   },
   {
-    title: "DevOps Engineer (BNSP)",
-    issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
-    date: "Sep 2024",
-    link: "/certificates/SERTIFIKAT BNSP DEVOPS ENGINEER ZAIN AHMAD FAHREZI.jpeg",
-    image: "/certificate-images/SERTIFIKAT BNSP DEVOPS ENGINEER ZAIN AHMAD FAHREZI.jpg",
+    title: "Containers, Kubernetes and Istio on IBM Cloud",
+    issuer: "IBM",
+    date: "2024",
+    link: "#",
+    image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=1000",
   },
   {
-    title: "Belajar Membuat Front-End Web untuk Pemula",
-    issuer: "Dicoding Indonesia",
-    date: "Des 2024",
-    link: "/certificates/Belajar Membuat Front-End Web untuk Pemula.pdf",
-    image: "/certificate-images/Belajar Membuat Front-End Web untuk Pemula.jpg",
+    title: "Getting Started with Microservices using Istio and IBM Cloud Kubernetes Service",
+    issuer: "IBM",
+    date: "2024",
+    link: "#",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1000",
   },
   {
-    title: "Operator Komputer Madya (BNSP)",
-    issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
-    date: "Des 2024",
-    link: "/certificates/Operator Komputer Madya BNSP.jpeg",
-    image: "/certificate-images/Operator Komputer Madya BNSP.jpg",
-  },
-  {
-    title: "Belajar Dasar Data Science",
-    issuer: "Dicoding Indonesia",
-    date: "Okt 2024",
-    link: "/certificates/Belajar Dasar Data Science.pdf",
-    image: "/certificate-images/Belajar Dasar Data Science.jpg",
-  },
-  {
-    title: "Belajar Dasar Structured Query Language (SQL)",
-    issuer: "Dicoding Indonesia",
-    date: "Okt 2024",
-    link: "/certificates/Belajar Dasar Structured Query Language (SQL).pdf",
-    image: "/certificate-images/Belajar Dasar Structured Query Language (SQL).jpg",
-  },
-  {
-    title: "Belajar Dasar AI",
-    issuer: "Dicoding Indonesia",
-    date: "Sep 2024",
-    link: "/certificates/Belajar Dasar AI.pdf",
-    image: "/certificate-images/Belajar Dasar AI.jpg",
-  },
-  {
-    title: "Belajar Dasar Manajemen Proyek",
-    issuer: "Dicoding Indonesia",
-    date: "Sep 2024",
-    link: "/certificates/Belajar Dasar Manajemen Proyek.pdf",
-    image: "/certificate-images/Belajar Dasar Manajemen Proyek.jpg",
-  },
-  {
-    title: "Operator Komputer Madya (VSGA)",
-    issuer: "Digital Talent Scholarship",
-    date: "Agu 2024",
-    link: "/certificates/Operator Komputer Madya VSGA.pdf",
-    image: "/certificate-images/Operator Komputer Madya VSGA.jpg",
-  },
-  {
-    title: "DevOps Engineer (VSGA)",
-    issuer: "Kominfo",
-    date: "Jul 2024",
-    link: "/certificates/DevOps Engineer VSGA.pdf",
-    image: "/certificate-images/DevOps Engineer VSGA.jpg",
-  },
-  {
-    title: "Java Fundamentals",
-    issuer: "Oracle",
-    date: "Jun 2024",
-    link: "/certificates/JAVA FUNDAMENTALS.pdf",
-    image: "/certificate-images/JAVA FUNDAMENTALS.jpg",
-  },
-  {
-    title: "Belajar Dasar Pemrograman Web",
-    issuer: "Dicoding Indonesia",
-    date: "Nov 2023",
-    link: "/certificates/Belajar Dasar Pemrograman Web.pdf",
-    image: "/certificate-images/Belajar Dasar Pemrograman Web.jpg",
+    title: "Beyond the Basics: Istio and IBM Cloud Kubernetes Service",
+    issuer: "IBM",
+    date: "2024",
+    link: "#",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000",
   },
 ];
 
 const techStack = {
-  frontend: [
-    { name: "React", icon: <FaReact className="text-[#61DAFB]" /> },
-    { name: "Next.js", icon: <SiNextdotjs className="dark:text-white text-slate-900" /> },
-    { name: "JavaScript", icon: <FaJsSquare className="text-[#F7DF1E]" /> },
-    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#38B2AC]" /> },
-    { name: "HTML5", icon: <FaHtml5 className="text-[#E34F26]" /> },
-    { name: "CSS3", icon: <FaCss3Alt className="text-[#1572B6]" /> },
+  devops: [
+    { name: "Docker", icon: <FaTools className="text-[#2496ED]" /> },
+    { name: "GitHub Actions", icon: <FaGithub className="dark:text-white text-slate-900" /> },
+    { name: "Kubernetes", icon: <FaTools className="text-[#326CE5]" /> },
+    { name: "Istio", icon: <FaTools className="text-[#466BB0]" /> },
+    { name: "OpenShift", icon: <FaTools className="text-[#EE0000]" /> },
   ],
-  backend: [
-    { name: "Node.js", icon: <FaNodeJs className="text-[#339933]" /> },
-    { name: "Express", icon: <SiExpress className="dark:text-white text-slate-900" /> },
+  cloud: [
+    { name: "AWS", icon: <FaTools className="text-[#FF9900]" /> },
+    { name: "IBM Cloud", icon: <FaTools className="text-[#1261FE]" /> },
+    { name: "Netlify", icon: <SiVercel className="text-[#00C7B7]" /> },
+    { name: "Vercel", icon: <SiVercel className="dark:text-white text-slate-900" /> },
   ],
-  database: [
-    { name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" /> },
-    { name: "PostgreSQL", icon: <SiPostgresql className="text-[#336791]" /> },
+  os: [
+    { name: "Linux (Ubuntu)", icon: <FaTools className="text-[#E95420]" /> },
+    { name: "Bash / Shell", icon: <FaTools className="text-[#4EAA25]" /> },
+    { name: "CentOS", icon: <FaTools className="text-[#932279]" /> },
   ],
   tools: [
     { name: "Git & GitHub", icon: <FaGithub className="dark:text-white text-slate-900" /> },
-    { name: "Vercel", icon: <SiVercel className="dark:text-white text-slate-900" /> },
-    { name: "Figma", icon: <FaFigma className="text-[#F24E1E]" /> },
-    { name: "Tools Lain", icon: <FaTools className="text-gray-400" /> },
+    { name: "VS Code", icon: <FaTools className="text-[#007ACC]" /> },
+    { name: "Python", icon: <FaTools className="text-[#3776AB]" /> },
   ],
 };
 
@@ -489,30 +418,21 @@ function ProjectSection() {
   const [visibleCertificatesCount, setVisibleCertificatesCount] = useState(INITIAL_CERTIFICATES_TO_SHOW);
   // === CHANGE END ===
 
-  // Fetch projects from database
   useEffect(() => {
     async function fetchProjects() {
+      if (!supabase) {
+        setLoadingProjects(false);
+        return;
+      }
       try {
-        console.log('🔍 Fetching projects from Supabase...');
         const { data, error } = await supabase
           .from('projects')
           .select('*')
           .order('created_at', { ascending: false });
-
-        if (error) {
-          console.error('❌ Error fetching projects:', error);
-          throw error;
-        }
-
-        if (data && data.length > 0) {
-          console.log('✅ Projects loaded from database:', data.length, 'projects');
-          console.log('📊 Projects data:', data);
-          setProjectsFromDB(data);
-        } else {
-          console.log('⚠️ No projects found in database, using fallback data');
-        }
+        if (error) throw error;
+        if (data && data.length > 0) setProjectsFromDB(data);
       } catch (err) {
-        console.error('❌ Error fetching projects:', err);
+        console.error('Error fetching projects:', err);
       } finally {
         setLoadingProjects(false);
       }
@@ -520,30 +440,21 @@ function ProjectSection() {
     fetchProjects();
   }, []);
 
-  // Fetch certificates from database
   useEffect(() => {
     async function fetchCertificates() {
+      if (!supabase) {
+        setLoadingCerts(false);
+        return;
+      }
       try {
-        console.log('🔍 Fetching certificates from Supabase...');
         const { data, error } = await supabase
           .from('certificates')
           .select('*')
           .order('issue_date', { ascending: false });
-
-        if (error) {
-          console.error('❌ Error fetching certificates:', error);
-          throw error;
-        }
-
-        if (data && data.length > 0) {
-          console.log('✅ Certificates loaded from database:', data.length, 'certificates');
-          console.log('📜 Certificates data:', data);
-          setCertificatesFromDB(data);
-        } else {
-          console.log('⚠️ No certificates found in database, using fallback data');
-        }
+        if (error) throw error;
+        if (data && data.length > 0) setCertificatesFromDB(data);
       } catch (err) {
-        console.error('❌ Error fetching certificates:', err);
+        console.error('Error fetching certificates:', err);
       } finally {
         setLoadingCerts(false);
       }

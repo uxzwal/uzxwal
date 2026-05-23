@@ -8,7 +8,7 @@ const Preloader = ({ onFinished }) => {
   const [showContent, setShowContent] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
   const [isAssetLoaded, setIsAssetLoaded] = useState(false);
-  const fullText = "www.uxzwal.me";
+  const fullText = "uxzwal.github.io/uzxwal";
 
   const handleAssetLoad = () => {
     setIsAssetLoaded(true);
@@ -19,6 +19,14 @@ const Preloader = ({ onFinished }) => {
       setShowContent(true);
     }, 500);
     return () => clearTimeout(initialTimer);
+  }, []);
+
+  // Fallback: if Spline never loads, auto-proceed after 5 seconds
+  useEffect(() => {
+    const fallbackTimer = setTimeout(() => {
+      setIsAssetLoaded(true);
+    }, 5000);
+    return () => clearTimeout(fallbackTimer);
   }, []);
 
   useEffect(() => {
@@ -56,11 +64,13 @@ const Preloader = ({ onFinished }) => {
               className="text-center relative z-10 p-4"
             >
               <div className="flex justify-center mb-2 mt-[-24px] md:mt-[-32px]">
-                <div className="w-[320px] h-[180px] md:w-[480px] md:h-[260px]">
+                <div className="w-[320px] h-[180px] md:w-[480px] md:h-[260px] relative overflow-hidden">
                   <Spline
                     scene="https://prod.spline.design/FcZ66SFMX1YbF-0I/scene.splinecode"
                     onLoad={handleAssetLoad}
                   />
+                  {/* Hide Spline watermark */}
+                  <div className="absolute bottom-0 right-0 w-48 h-10 bg-[#060010] z-10" />
                 </div>
               </div>
               <motion.h1
@@ -89,7 +99,7 @@ const Preloader = ({ onFinished }) => {
                 <a href="https://www.linkedin.com/in/uxzwal/" target="_blank" rel="noopener noreferrer" className="dark:hover:text-[#00ffdc] hover:text-cyan-600 transition-all duration-300 transform hover:scale-110">
                   <Linkedin size={32} />
                 </a>
-                <a href="https://www.instagram.com/zainahmadf" target="_blank" rel="noopener noreferrer" className="dark:hover:text-[#00ffdc] hover:text-cyan-600 transition-all duration-300 transform hover:scale-110">
+                <a href="https://uxzwal.github.io/uzxwal" target="_blank" rel="noopener noreferrer" className="dark:hover:text-[#00ffdc] hover:text-cyan-600 transition-all duration-300 transform hover:scale-110">
                   <Instagram size={32} />
                 </a>
               </motion.div>
