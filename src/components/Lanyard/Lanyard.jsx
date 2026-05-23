@@ -167,8 +167,11 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
       ctx.fillText('DEVOPS ENGINEER', pillX + pillW / 2, pillY + 110);
       
       const tex = new THREE.CanvasTexture(canvas);
-      tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-      tex.repeat.set(1, 1);
+      tex.wrapS = THREE.RepeatWrapping;
+      tex.wrapT = THREE.RepeatWrapping;
+      tex.center.set(0.5, 0.5);
+      tex.rotation = Math.PI; // Rotate 180 degrees to make it upright
+      tex.repeat.set(-1, 1); // Flip horizontally to correct mirroring
       setCustomCardTexture(tex);
     };
   }, []);

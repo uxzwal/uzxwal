@@ -5,7 +5,6 @@ import Spline from '@splinetool/react-spline';
 import { AnimatedGradientTextDemo } from '../components/AnimatedGradientTextDemo';
 import GradientText from '../components/GradientText';
 import TextGenerateEffect from "../components/text-generate-effect";
-import Skills from '../components/Skills';
 import Lanyard from '../components/Lanyard/Lanyard';
 import { VelocityScroll } from '../components/VelocityScroll';
 import { ButtonMovingBorder } from '../components/MovingBorderButton';
@@ -33,7 +32,6 @@ const Home = () => {
     const stats = [
         { icon: <FaCode />, value: "5+", title: "IBM CERTIFICATES", description: "Containers, Kubernetes & Istio" },
         { icon: <FaCertificate />, value: "3+", title: "DEVOPS PROJECTS", description: "CI/CD, Docker & Cloud" },
-        { icon: <FaGlobe />, value: "2", title: "YEARS OF PRACTICE", description: "Cloud-native & DevOps journey" },
     ];
 
     return (
@@ -81,9 +79,6 @@ const Home = () => {
                     </motion.div>
                     <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.55, ease: "easeOut" }}>
                         <TextGenerateEffect words={'Containers | CI/CD | Cloud Infrastructure | Linux'} />
-                    </motion.div>
-                    <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}>
-                        <Skills />
                     </motion.div>
                     <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 1.0, ease: "easeOut" }} className="flex flex-row gap-4 mt-8">
                         <a href="https://github.com/uxzwal" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="group relative flex h-12 w-12 items-center justify-center rounded-full border dark:border-slate-700 border-slate-200 dark:bg-slate-900/[0.8] bg-white text-slate-600 dark:text-white transition-all duration-300 hover:border-cyan-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:shadow-md dark:hover:shadow-[0_0_24px_2px_#00ffdc]">
@@ -160,8 +155,8 @@ const Home = () => {
                         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
                         className={`dark:text-white text-slate-800 text-center md:text-left px-4 md:px-8 transition-all duration-700 ${is3dEnabled ? 'md:w-1/2' : 'md:w-2/3'}`}
                     >
-                        <p className="text-2xl dark:text-gray-300 text-slate-500 font-moderniz my" style={{ textShadow: theme === 'dark' ? "2px 2px 0 #000754, 4px 4px 0 #4079ff, 0 4px 12px #40ffaa, 0 1px 0 #00ffdc" : "none" }}>Hello, I'm</p>
-                        <h3 className="text-4xl font-bold dark:text-white text-slate-900 my-2 font-moderniz" style={{ textShadow: theme === 'dark' ? "2px 2px 0 #000754, 4px 4px 0 #4079ff, 0 4px 12px #40ffaa, 0 1px 0 #00ffdc" : "none" }}>Ujjwal Kumar</h3>
+                        <p className="text-2xl dark:text-gray-300 text-slate-500 font-moderniz my" style={{ textShadow: theme === 'dark' ? "2px 2px 0 #000754, 4px 4px 0 #4079ff, 0 4px 12px #40ffaa, 0 1px 0 #00ffdc" : "none" }}>hello i'm</p>
+                        <h3 className="text-4xl font-bold dark:text-white text-slate-900 my-2 font-moderniz" style={{ textShadow: theme === 'dark' ? "2px 2px 0 #000754, 4px 4px 0 #4079ff, 0 4px 12px #40ffaa, 0 1px 0 #00ffdc" : "none" }}>ujjwal</h3>
                         <p className="dark:text-white/80 text-slate-600 leading-relaxed mt-4 font-cascadia text-justify">
                             DevOps Engineer with hands-on experience in containerization, CI/CD automation, and cloud-native technologies. Proficient in Docker, GitHub Actions, Linux administration, and Kubernetes fundamentals, with IBM-certified expertise in Containers, Kubernetes, and Istio on IBM Cloud.
                         </p>
@@ -169,9 +164,6 @@ const Home = () => {
                             "Automate everything. Reliable infrastructure is the foundation of great software."
                         </div>
                         <div className="flex flex-row sm:flex-row gap-4 mt-8 justify-center md:justify-start items-center">
-                            <ButtonMovingBorder as="a" href="/cv.pdf" download duration={3000} borderRadius="0.75rem" className="dark:bg-slate-900/[0.8] bg-white border dark:border-slate-800 border-slate-200 dark:text-white text-slate-800 font-semibold flex items-center justify-center gap-2 transition-all duration-300 dark:shadow-none shadow-md hover:shadow-lg dark:hover:shadow-[0_0_24px_8px_#40ffaa]">
-                                <FaDownload /> Download CV
-                            </ButtonMovingBorder>
                             <ButtonMovingBorder as="a" href="#projects" duration={3000} borderRadius="0.75rem" className="dark:bg-slate-900/[0.8] bg-white border dark:border-slate-800 border-slate-200 dark:text-white text-slate-800 font-semibold flex items-center justify-center gap-2 transition-all duration-300 dark:shadow-none shadow-md hover:shadow-lg dark:hover:shadow-[0_0_24px_8px_#40ffaa]">
                                 <FaBriefcase /> View Projects
                             </ButtonMovingBorder>

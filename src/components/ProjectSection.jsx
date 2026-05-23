@@ -606,13 +606,7 @@ function ProjectSection() {
             >
               {activeTab === 'Projects' && (
                 <>
-                  {/* Only show category buttons for dummy data */}
-                  {projectsFromDB.length === 0 && (
-                    <div className="flex justify-center gap-4 mb-8">
-                      <button className={`px-5 py-2 rounded-full font-semibold transition-all duration-200 border ${projectCategory === 'Web/Apps' ? 'bg-cyan-700/80 text-white border-cyan-400 shadow-cyan-500/10 shadow-lg' : 'bg-slate-900/60 text-cyan-200 border-slate-700 hover:bg-cyan-800/40 hover:text-white'}`} onClick={() => setProjectCategory('Web/Apps')}>Web/Apps</button>
-                      <button className={`px-5 py-2 rounded-full font-semibold transition-all duration-200 border ${projectCategory === '3D Design' ? 'bg-cyan-700/80 text-white border-cyan-400 shadow-cyan-500/10 shadow-lg' : 'bg-slate-900/60 text-cyan-200 border-slate-700 hover:bg-cyan-800/40 hover:text-white'}`} onClick={() => setProjectCategory('3D Design')}>3D Design</button>
-                    </div>
-                  )}
+                   {/* No category buttons needed anymore */}
 
                   {loadingProjects ? (
                     <div className="flex justify-center py-12">
