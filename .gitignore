@@ -7,12 +7,11 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
-modules
 dist
 dist-ssr
 *.local
-pnpm-lock.yaml
 
 # Editor directories and files
 .vscode/*
@@ -25,7 +24,43 @@ pnpm-lock.yaml
 *.sln
 *.sw?
 
-*.hot-update.json
-*.hot-update.js
+# OS System Files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
 
+# Environment variables
 .env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+*.env.*
+!.env.example
+
+# Supabase
+supabase/.branches
+supabase/.temp
+supabase/config.toml
+!supabase/migrations
+!supabase/seed.sql
+
+# Ignore SQL scripts created during development (unless explicitly in migrations or seed)
+*.sql
+
+# Vite
+.vite/
+*.tsbuildinfo
+
+# Vercel
+.vercel
+
+# Testing
+coverage
+
+# Temporary
+tmp/
+temp/
+*.tmp
+*.bak

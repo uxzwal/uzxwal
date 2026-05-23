@@ -1,81 +1,98 @@
-# 🚀 Ujjwal Kumar | 3D DevOps Portfolio
+# PROJEK PORTFOLIO ZAIN AHMAD FAHREZI
 
-Welcome to the source code of my immersive, 3D-animated professional portfolio. This project was built to showcase not only my professional experience as a DevOps Engineer, but also a premium, high-performance web experience leveraging WebGL and modern animation libraries.
+Ini adalah proyek React yang dikembangkan menggunakan Vite — sebuah build tool modern dengan performa tinggi, dukungan Hot Module Replacement (HMR), dan waktu pengembangan yang cepat. Proyek ini menampilkan portfolio interaktif dengan elemen 3D dan animasi yang halus.
 
-## ✨ Features
-- **Immersive 3D Graphics**: Powered by `Three.js` with custom WebGL shaders and post-processing.
-- **Fluid Micro-Animations**: Smooth page transitions, staggered text reveals, and cursor-reactive elements using `GSAP`.
-- **Production-Ready Architecture**: Multi-stage Dockerized builds optimized for low-resource VPS environments.
-- **Dynamic Routing**: Client-side routing with an Express backend serving pre-compiled `Pug` templates.
-- **Universal Deployment**: Pre-configured for Docker, Nginx, Ngrok, Render, Railway, Vercel, Netlify, and static hosts (GitHub/Cloudflare Pages).
+> ⚠️ Proyek ini masih dalam **tahap pengembangan aktif**. Mohon tidak menyalin, menjiplak, atau mendistribusikan ulang sebagian atau seluruh isi proyek ini **tanpa mencantumkan sumber atau izin dari pembuat.**
 
 ---
 
-## 🛠️ Tech Stack
-- **Frontend**: HTML5, Vanilla JavaScript, SCSS, Pug
-- **3D & Animation**: Three.js, GSAP
-- **Backend**: Node.js, Express
-- **Build Tools**: Webpack, concurrently
-- **Infrastructure & Deployment**: Docker, Docker Compose, Nginx, Webhook/CI/CD ready
+## 📆 Teknologi yang Digunakan
+
+### Core & Frontend
+* ⚛️ [React](https://react.dev/)
+* ⚡ [Vite](https://vitejs.dev/)
+* 💨 [Tailwind CSS](https://tailwindcss.com/)
+* 🧪 [ESLint](https://eslint.org/)
+
+### Backend & Database
+* 🔥 [Supabase](https://supabase.com/)
+
+### Animasi & 3D
+* 🧊 [Three.js](https://threejs.org/) & [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
+* 🎬 [Framer Motion](https://www.framer.com/motion/)
+* 🎭 [GSAP](https://greensock.com/gsap/)
 
 ---
 
-## 💻 Local Development
+## 🛠️ Cara Menjalankan Proyek Ini
 
-1. **Clone the repository**
+1. **Clone repositori ini:**
+
    ```bash
-   git clone https://github.com/uxzwal/uzxwal.git
+   git clone https://github.com/username/uzxwal.git
    cd uzxwal
    ```
 
-2. **Install Dependencies**
+2. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
-3. **Run the Development Server**
+3. **Konfigurasi Environment:**
+
+   Salin file `.env.example` menjadi `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+   *Pastikan variabel environment untuk Supabase sudah terisi dengan benar.*
+
+4. **Jalankan project secara lokal:**
+
    ```bash
    npm run dev
    ```
-   *This concurrently starts the Webpack dev server for assets and Nodemon for the Express backend. The app will be running on `http://localhost:2022`.*
 
----
+   Setelah itu buka browser ke: [http://localhost:5173](http://localhost:5173)
 
-## 🐳 Docker Deployment (Recommended)
+5. **Build untuk produksi (opsional):**
 
-This project is fully dockerized and ready for production on any VPS or local machine.
-
-1. **Build and Run**
    ```bash
-   docker-compose up -d --build
-   ```
-   *This fires up two containers: a Node.js production server, and an Nginx reverse proxy serving the app lightning-fast on port `80`.*
-
-2. **Expose with Ngrok (Optional)**
-   ```bash
-   ngrok http 80
-   ```
-
-3. **Stop the Containers**
-   ```bash
-   docker-compose down
+   npm run build
    ```
 
 ---
 
-## 🌩️ Cloud & PaaS Deployments
+## ❗ Hak Cipta & Lisensi
 
-We've included all the necessary configuration files to deploy this project literally anywhere:
+Proyek ini adalah karya asli milik **Ujjwal Kumar** dan hanya diperbolehkan untuk digunakan sebagai referensi pribadi.
 
-- **Render / Railway / Koyeb**: Simply connect your GitHub repository. The included `render.yaml`, `railway.json`, and `Procfile` will automatically build the Docker environment.
-- **Vercel**: The `vercel.json` file automatically routes the Express backend into Vercel's serverless environment.
-- **Netlify / Cloudflare Pages / GitHub Pages**: We included a custom export script. Run `npm run build` which will compile the dynamic Pug templates into static HTML inside the `/public` folder, which can be deployed to any static host!
+🚫 **Dilarang keras menjiplak, mengupload ulang, atau menggunakan sebagian/keseluruhan kode tanpa mencantumkan sumber atau tanpa izin.**
+
+📄 Untuk informasi lisensi atau kerja sama, silakan hubungi saya langsung melalui GitHub.
 
 ---
 
-## 📬 Let's Work Together
-Feel free to reach out to me regarding DevOps opportunities, CI/CD automation, or cloud infrastructure.
+## 📌 Catatan Tambahan
 
-- **Email**: [iamkashyup@gmail.com](mailto:iamkashyup@gmail.com)
-- **LinkedIn**: [Ujjwal Kumar](https://www.linkedin.com/in/uxzwal)
-- **GitHub**: [@uxzwal](https://github.com/uxzwal)
+Jika kamu ingin mengembangkan proyek ini lebih lanjut atau menggunakan sebagian ide/kodenya, **wajib mencantumkan sumber dengan link ke repositori ini**.
+
+Terima kasih sudah menghargai karya pengembang! 🙏
+
+---
+
+## 💖 Dukung Pengembang
+
+Jika kamu merasa proyek ini bermanfaat dan ingin memberikan dukungan:
+
+* 💳 **Dana:** 0896-0433-2830
+* 🏦 **Rekening BRI:** 0342 0107 8321 503 a.n. Ujjwal Kumar
+* 🅿️ **PayPal:** [paypal.me/uxzwal](https://paypal.me/uxzwal)
+
+Setiap dukungan sangat berarti dan membantu saya untuk terus mengembangkan proyek-proyek open source lainnya. Terima kasih! 🙌
+
+## 🌐 Sosial Media
+
+* 💼 [LinkedIn](https://www.linkedin.com/in/uxzwal)
+* 📸 Instagram: [@uxzwal](https://www.instagram.com/uxzwal)
+* 🎥 TikTok: [@uxzwal](https://www.tiktok.com/@uxzwal)

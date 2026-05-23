@@ -1,0 +1,108 @@
+/* Import Google Fonts PERTAMA - sebelum Tailwind */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cascadia+Code&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font kustom Anda */
+@font-face {
+    font-family: 'Moderniz';
+    src: url(./assets/fonts/Moderniz.otf) format('opentype');
+}
+
+@font-face {
+    font-family: 'Bauhaus93';
+    src: url(./assets/fonts/BAUHS93.ttf) format('truetype');
+}
+
+@layer base {
+  /* --- CSS VARIABLES FOR THEME --- */
+  :root {
+    --bg-primary: #ffffff; /* Light Mode Background */
+    --text-primary: #0f172a; /* Light Mode Text (Slate-950) */
+    --text-secondary: #475569; /* Light Mode Text Secondary (Slate-600) */
+    --card-bg: #f8fafc; /* Light Mode Card (Slate-50) */
+    --card-border: #e2e8f0; /* Light Mode Border (Slate-200) */
+    --accent: #06b6d4; /* Cyan-500 */
+    --accent-glow: rgba(6, 182, 212, 0.5);
+  }
+
+  /* DARK MODE OVERRIDES */
+  .dark {
+    --bg-primary: #060010; /* Original Dark Background */
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8; /* Slate-400 */
+    --card-bg: rgba(15, 23, 42, 0.6); /* Slate-900 with opacity */
+    --card-border: rgba(255, 255, 255, 0.1);
+    --accent: #00ffdc; /* Original Cyan Accent */
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .font-cascadia {
+    font-family: 'Cascadia Code', monospace;
+  }
+}
+
+/* --- Gaya untuk Latar Belakang Preloader --- */
+.bg-animated {
+  background: linear-gradient(120deg, #060010 0%, #0a1a2f 40%, #1b2b4b 100%);
+  background-size: 200% 200%;
+  animation: gradientMove 12s ease-in-out infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
+/* Gaya utilitas asli Anda */
+@layer utilities {
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes reveal {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+  
+  .animate-fade-in-up {
+    animation: fade-in-up 0.5s forwards;
+  }
+
+  .animate-reveal {
+    animation: reveal 2s linear forwards;
+  }
+}
