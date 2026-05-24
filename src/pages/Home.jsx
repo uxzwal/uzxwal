@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from "framer-motion";
-import { FaGithub, FaInstagram, FaLinkedin, FaDownload, FaBriefcase, FaCode, FaCertificate, FaGlobe, FaArrowRight, FaCube } from 'react-icons/fa';
+import { 
+  FaGithub, FaInstagram, FaLinkedin, FaBriefcase, FaCode, FaCertificate,
+  FaTelegram, FaDiscord, FaReddit, FaStackOverflow, FaDev, FaQuora, 
+  FaMedium, FaFacebook, FaTumblr
+} from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
+import { SiNotion } from 'react-icons/si';
 import Spline from '@splinetool/react-spline';
 import { AnimatedGradientTextDemo } from '../components/AnimatedGradientTextDemo';
 import GradientText from '../components/GradientText';
@@ -12,6 +18,23 @@ import ProjectSection from '../components/ProjectSection';
 import Contact from '../components/Contact';
 import { useTheme } from '../contexts/ThemeContext';
 import ErrorBoundary from '../components/ErrorBoundary';
+
+const socialHandles = [
+  { name: 'GitHub', url: 'https://github.com/uxzwal', icon: <FaGithub />, color: '#ffffff', glow: '#ffffff' },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/uxzwal', icon: <FaLinkedin />, color: '#0077b5', glow: '#0077b5' },
+  { name: 'Twitter/X', url: 'https://x.com/uxzwalll', icon: <FaXTwitter />, color: '#ffffff', glow: '#ffffff' },
+  { name: 'Instagram', url: 'https://www.instagram.com/uxzwal/', icon: <FaInstagram />, color: '#e1306c', glow: '#e1306c' },
+  { name: 'Discord', url: 'https://discord.com/users/1196009261612933150', icon: <FaDiscord />, color: '#5865f2', glow: '#5865f2' },
+  { name: 'Telegram', url: 'https://t.me/uxwal', icon: <FaTelegram />, color: '#0088cc', glow: '#0088cc' },
+  { name: 'Reddit', url: 'https://www.reddit.com/user/Historical-Pie-9196/', icon: <FaReddit />, color: '#ff4500', glow: '#ff4500' },
+  { name: 'Stack Overflow', url: 'https://stackoverflow.com/users/29480233/ujjwal', icon: <FaStackOverflow />, color: '#f48024', glow: '#f48024' },
+  { name: 'Dev.to', url: 'https://dev.to/uxzwal', icon: <FaDev />, color: '#ffffff', glow: '#ffffff' },
+  { name: 'Notion', url: 'https://uxzwal.notion.site/About-Ujjwal-2e92217839ed808499e3f23ff8e9434f', icon: <SiNotion />, color: '#ffffff', glow: '#ffffff' },
+  { name: 'Quora', url: 'https://www.quora.com/profile/Ghost-8186', icon: <FaQuora />, color: '#b92b27', glow: '#b92b27' },
+  { name: 'Medium', url: 'https://medium.com/@uxzwal', icon: <FaMedium />, color: '#ffffff', glow: '#ffffff' },
+  { name: 'Facebook', url: 'https://www.facebook.com/profile.php?id=100070625400647', icon: <FaFacebook />, color: '#1877f2', glow: '#1877f2' },
+  { name: 'Tumblr', url: 'https://www.tumblr.com/blog/uxzwal', icon: <FaTumblr />, color: '#35465c', glow: '#35465c' }
+];
 
 const Home = () => {
     const { theme } = useTheme();
@@ -80,17 +103,50 @@ const Home = () => {
                     <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.55, ease: "easeOut" }}>
                         <TextGenerateEffect words={'Containers | CI/CD | Cloud Infrastructure | Linux'} />
                     </motion.div>
-                    <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 1.0, ease: "easeOut" }} className="flex flex-row gap-4 mt-8">
-                        <a href="https://github.com/uxzwal" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" className="group relative flex h-12 w-12 items-center justify-center rounded-full border dark:border-slate-700 border-slate-200 dark:bg-slate-900/[0.8] bg-white text-slate-600 dark:text-white transition-all duration-300 hover:border-cyan-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:shadow-md dark:hover:shadow-[0_0_24px_2px_#00ffdc]">
-                            <FaGithub className="h-6 w-6 dark:text-slate-400 text-slate-600 transition-all duration-300 group-hover:text-cyan-600 dark:group-hover:text-cyan-300" />
-                        </a>
-                        <a href="https://uxzwal.github.io/uzxwal" target="_blank" rel="noopener noreferrer" aria-label="Portfolio" className="group relative flex h-12 w-12 items-center justify-center rounded-full border dark:border-slate-700 border-slate-200 dark:bg-slate-900/[0.8] bg-white text-slate-600 dark:text-white transition-all duration-300 hover:border-cyan-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:shadow-md dark:hover:shadow-[0_0_24px_2px_#00ffdc]">
-                            <FaInstagram className="h-6 w-6 dark:text-slate-400 text-slate-600 transition-all duration-300 group-hover:text-cyan-600 dark:group-hover:text-cyan-300" />
-                        </a>
-                        <a href="https://linkedin.com/in/uxzwal" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" className="group relative flex h-12 w-12 items-center justify-center rounded-full border dark:border-slate-700 border-slate-200 dark:bg-slate-900/[0.8] bg-white text-slate-600 dark:text-white transition-all duration-300 hover:border-cyan-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:shadow-md dark:hover:shadow-[0_0_24px_2px_#00ffdc]">
-                            <FaLinkedin className="h-6 w-6 dark:text-slate-400 text-slate-600 transition-all duration-300 group-hover:text-cyan-600 dark:group-hover:text-cyan-300" />
-                        </a>
-                    </motion.div>
+                    {/* 3D Social Badge Deck */}
+                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3 mt-8 w-full max-w-2xl px-2">
+                        {socialHandles.map((handle, index) => (
+                            <motion.a
+                                key={handle.name}
+                                href={handle.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={handle.name}
+                                initial={{ opacity: 0, y: 15 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.4, delay: 0.6 + index * 0.04 }}
+                                whileHover={{ 
+                                    y: -8, 
+                                    scale: 1.08,
+                                    rotateX: 10,
+                                    rotateY: -10,
+                                    boxShadow: `0 15px 30px rgba(0, 0, 0, 0.6), 0 0 20px ${handle.glow}40`
+                                }}
+                                className="group relative flex flex-col items-center justify-center p-3 rounded-xl border dark:border-white/10 border-slate-200 dark:bg-[#070708]/85 bg-white backdrop-blur-md transition-all duration-300 dark:shadow-[0_4px_12px_rgba(0,0,0,0.5)] shadow-md text-slate-400 dark:text-slate-300 hover:text-white dark:hover:border-cyan-400 hover:border-cyan-500 cursor-pointer"
+                                style={{
+                                    transformStyle: 'preserve-3d',
+                                    perspective: '1000px'
+                                }}
+                            >
+                                <div 
+                                    className="text-2xl mb-1.5 transition-transform duration-300 group-hover:scale-110"
+                                    style={{ 
+                                        color: handle.color,
+                                        filter: `drop-shadow(0 0 6px ${handle.glow}60)`
+                                    }}
+                                >
+                                    {handle.icon}
+                                </div>
+                                <span className="text-[9px] font-cascadia tracking-wider uppercase font-semibold text-slate-500 group-hover:text-white transition-colors duration-300">
+                                    {handle.name}
+                                </span>
+                                {/* Glossy Sheen Overlay */}
+                                <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none">
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
+                                </div>
+                            </motion.a>
+                        ))}
+                    </div>
                 </div>
 
                 {/* 3. Render Lanyard secara kondisional */}
