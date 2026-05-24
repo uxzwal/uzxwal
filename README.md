@@ -1,98 +1,101 @@
-# PROJEK PORTFOLIO ZAIN AHMAD FAHREZI
+# 🛸 UJJWAL KUMAR | 3D DevOps Portfolio
 
-Ini adalah proyek React yang dikembangkan menggunakan Vite — sebuah build tool modern dengan performa tinggi, dukungan Hot Module Replacement (HMR), dan waktu pengembangan yang cepat. Proyek ini menampilkan portfolio interaktif dengan elemen 3D dan animasi yang halus.
+An immersive, high-performance 3D portfolio and interactive infrastructure dashboard representing **Ujjwal Kumar**, DevOps Engineer. Designed with a sleek, futuristic dark aesthetic, vibrant glowing transitions, and state-of-the-art micro-interactions.
 
-> ⚠️ Proyek ini masih dalam **tahap pengembangan aktif**. Mohon tidak menyalin, menjiplak, atau mendistribusikan ulang sebagian atau seluruh isi proyek ini **tanpa mencantumkan sumber atau izin dari pembuat.**
+Live Demo: [https://uxzwal.github.io/uzxwal/](https://uxzwal.github.io/uzxwal/)
 
 ---
 
-## 📆 Teknologi yang Digunakan
+## 🌟 Key Features
 
-### Core & Frontend
-* ⚛️ [React](https://react.dev/)
-* ⚡ [Vite](https://vitejs.dev/)
-* 💨 [Tailwind CSS](https://tailwindcss.com/)
-* 🧪 [ESLint](https://eslint.org/)
+* **Immersive 3D Visualizer**: Cursor-reactive Three.js elements and fully integrated, responsive Spline scenes.
+* **Interactive 3D Social Badge Deck**: A customized, premium 3D badge grid linking all 14 professional and social platforms with smooth CSS transform effects.
+* **Dynamic Admin Dashboard**: Real-time Supabase integration to manage projects, certificates, visitor comments (with pin features), and messages.
+* **Advanced Animations**: Powered by Framer Motion and custom CSS animations for responsive, premium transitions.
+* **Sleek Aesthetic**: Solid black backdrop paired with custom neon-glowing HSL cyan accents, glassmorphic card overlays, and clean typographic hierarchy.
+
+---
+
+## 🛠️ Tech Stack
+
+### Core & Styling
+* ⚛️ **[React](https://react.dev/)** - Frontend Library
+* ⚡ **[Vite](https://vitejs.dev/)** - High-performance dev server & bundler
+* 💨 **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first styling framework
+* 🎨 **[Lucide Icons](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/)** - Premium vector icons
+
+### 3D & Animations
+* 🧊 **[Three.js](https://threejs.org/) & [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)** - Interactive 3D graphics
+* 🌀 **[Spline](https://spline.design/)** - High-fidelity 3D design & scenes
+* 🎬 **[Framer Motion](https://www.framer.com/motion/)** - Fluent physics-based animations
 
 ### Backend & Database
-* 🔥 [Supabase](https://supabase.com/)
-
-### Animasi & 3D
-* 🧊 [Three.js](https://threejs.org/) & [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
-* 🎬 [Framer Motion](https://www.framer.com/motion/)
-* 🎭 [GSAP](https://greensock.com/gsap/)
+* 🔥 **[Supabase](https://supabase.com/)** - Database & Storage for dynamic content management
 
 ---
 
-## 🛠️ Cara Menjalankan Proyek Ini
+## 🚀 Getting Started
 
-1. **Clone repositori ini:**
+### Prerequisites
+* **Node.js** (v18.0.0 or higher recommended)
+* **npm** or **yarn**
 
+### Local Setup
+
+1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/username/uzxwal.git
+   git clone https://github.com/uxzwal/uzxwal.git
    cd uzxwal
    ```
 
-2. **Install dependencies:**
-
+2. **Install Dependencies:**
    ```bash
    npm install
    ```
 
-3. **Konfigurasi Environment:**
-
-   Salin file `.env.example` menjadi `.env`:
-   ```bash
-   cp .env.example .env
+3. **Environment Setup:**
+   Create a `.env` file in the root directory and add your Supabase credentials:
+   ```env
+   VITE_SUPABASE_URL=your-supabase-url
+   VITE_SUPABASE_ANON_KEY=your-supabase-anon-key
    ```
-   *Pastikan variabel environment untuk Supabase sudah terisi dengan benar.*
 
-4. **Jalankan project secara lokal:**
-
+4. **Start Development Server:**
    ```bash
    npm run dev
    ```
+   Open your browser to [http://localhost:5173](http://localhost:5173).
 
-   Setelah itu buka browser ke: [http://localhost:5173](http://localhost:5173)
-
-5. **Build untuk produksi (opsional):**
-
+5. **Build for Production:**
    ```bash
    npm run build
    ```
 
 ---
 
-## ❗ Hak Cipta & Lisensi
+## 🌐 Connected Platforms
 
-Proyek ini adalah karya asli milik **Ujjwal Kumar** dan hanya diperbolehkan untuk digunakan sebagai referensi pribadi.
+Connect with Ujjwal across all major professional and social channels:
 
-🚫 **Dilarang keras menjiplak, mengupload ulang, atau menggunakan sebagian/keseluruhan kode tanpa mencantumkan sumber atau tanpa izin.**
-
-📄 Untuk informasi lisensi atau kerja sama, silakan hubungi saya langsung melalui GitHub.
+* 💼 **LinkedIn**: [uxzwal](https://www.linkedin.com/in/uxzwal)
+* 🐙 **GitHub**: [uxzwal](https://github.com/uxzwal)
+* 🐦 **X / Twitter**: [uxzwalll](https://x.com/uxzwalll)
+* 💻 **Stack Overflow**: [Ujjwal](https://stackoverflow.com/users/29480233/ujjwal)
+* 📝 **Dev.to**: [uxzwal](https://dev.to/uxzwal)
+* 📓 **Notion**: [About Ujjwal](https://uxzwal.notion.site/About-Ujjwal-2e92217839ed808499e3f23ff8e9434f)
+* 🎨 **Medium**: [@uxzwal](https://medium.com/@uxzwal)
+* 💬 **Discord**: [@uxzwal](https://discord.com/users/1196009261612933150)
+* ✈️ **Telegram**: [uxwal](https://t.me/uxwal)
+* 👽 **Reddit**: [Historical-Pie-9196](https://www.reddit.com/user/Historical-Pie-9196/)
+* 📸 **Instagram**: [uxzwal](https://www.instagram.com/uxzwal/)
+* 🎭 **Quora**: [Ghost-8186](https://www.quora.com/profile/Ghost-8186)
+* 🌍 **Tumblr**: [uxzwal](https://www.tumblr.com/blog/uxzwal)
+* 👥 **Facebook**: [Profile](https://www.facebook.com/profile.php?id=100070625400647)
 
 ---
 
-## 📌 Catatan Tambahan
+## 📄 License & Terms
 
-Jika kamu ingin mengembangkan proyek ini lebih lanjut atau menggunakan sebagian ide/kodenya, **wajib mencantumkan sumber dengan link ke repositori ini**.
+© Ujjwal Kumar. All rights reserved. 
 
-Terima kasih sudah menghargai karya pengembang! 🙏
-
----
-
-## 💖 Dukung Pengembang
-
-Jika kamu merasa proyek ini bermanfaat dan ingin memberikan dukungan:
-
-* 💳 **Dana:** 0896-0433-2830
-* 🏦 **Rekening BRI:** 0342 0107 8321 503 a.n. Ujjwal Kumar
-* 🅿️ **PayPal:** [paypal.me/uxzwal](https://paypal.me/uxzwal)
-
-Setiap dukungan sangat berarti dan membantu saya untuk terus mengembangkan proyek-proyek open source lainnya. Terima kasih! 🙌
-
-## 🌐 Sosial Media
-
-* 💼 [LinkedIn](https://www.linkedin.com/in/uxzwal)
-* 📸 Instagram: [@uxzwal](https://www.instagram.com/uxzwal)
-* 🎥 TikTok: [@uxzwal](https://www.tiktok.com/@uxzwal)
+Feel free to explore the codebase for reference, educational purposes, or architectural inspiration. If you build upon this template, kindly provide attribution back to this repository. Automated deployment and hosting are handled via GitHub Pages under the automated Actions workflow.
