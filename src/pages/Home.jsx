@@ -105,50 +105,35 @@ const Home = () => {
                     </motion.div>
                     {/* 3D Social Badge Deck */}
                     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3 mt-8 w-full max-w-2xl px-2">
-                        {socialHandles.map((handle, index) => (
-                            <motion.a
+                        {socialHandles.map((handle) => (
+                            <a
                                 key={handle.name}
                                 href={handle.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label={handle.name}
-                                initial={{ opacity: 0, y: 15 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.4, delay: 0.6 + index * 0.04 }}
-                                className="group relative flex flex-col items-center justify-center p-3 rounded-xl border dark:border-white/10 border-slate-200 dark:bg-[#070708]/85 bg-white backdrop-blur-md transition-all duration-300 dark:shadow-[0_4px_12px_rgba(0,0,0,0.5)] shadow-md text-slate-400 dark:text-slate-300 hover:text-white cursor-pointer"
+                                className="group relative flex flex-col items-center justify-center p-3 rounded-xl border dark:border-white/10 border-slate-200 dark:bg-[#070708]/85 bg-white backdrop-blur-md transition-all duration-300 dark:shadow-[0_4px_12px_rgba(0,0,0,0.5)] shadow-md text-slate-400 dark:text-slate-300 hover:text-white cursor-pointer hover:-translate-y-1.5 hover:scale-105 hover:border-cyan-400"
                                 style={{
                                     transformStyle: 'preserve-3d',
                                     perspective: '1000px',
-                                    transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
-                                }}
-                                onMouseEnter={(e) => {
-                                    e.currentTarget.style.transform = 'translateY(-6px) scale(1.06) rotateX(8deg) rotateY(-8deg)';
-                                    e.currentTarget.style.boxShadow = `0 12px 24px rgba(0, 0, 0, 0.6), 0 0 16px ${handle.glow}50`;
-                                    e.currentTarget.style.borderColor = handle.glow;
-                                }}
-                                onMouseLeave={(e) => {
-                                    e.currentTarget.style.transform = '';
-                                    e.currentTarget.style.boxShadow = '';
-                                    e.currentTarget.style.borderColor = '';
                                 }}
                             >
                                 <div 
                                     className="text-2xl mb-1.5 transition-transform duration-300 group-hover:scale-110"
                                     style={{ 
                                         color: handle.color,
-                                        filter: `drop-shadow(0 0 5px ${handle.glow}50)`
                                     }}
                                 >
                                     {handle.icon}
                                 </div>
-                                <span className="text-[9px] font-cascadia tracking-wider uppercase font-semibold text-slate-500 group-hover:text-white transition-colors duration-300">
+                                <span className="text-[9px] font-cascadia tracking-wider uppercase font-semibold text-slate-500 group-hover:text-white transition-colors duration-300 text-center">
                                     {handle.name}
                                 </span>
                                 {/* Glossy Sheen Overlay */}
                                 <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none">
                                     <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
                                 </div>
-                            </motion.a>
+                            </a>
                         ))}
                     </div>
                 </div>
