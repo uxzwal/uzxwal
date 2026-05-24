@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { 
   FaGithub, FaInstagram, FaLinkedin, FaBriefcase, FaCode, FaCertificate,
   FaTelegram, FaDiscord, FaReddit, FaStackOverflow, FaDev, FaQuora, 
-  FaMedium, FaFacebook, FaTumblr, FaCube
+  FaMedium, FaFacebook, FaTumblr, FaCube, FaArrowRight
 } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { SiNotion } from 'react-icons/si';
