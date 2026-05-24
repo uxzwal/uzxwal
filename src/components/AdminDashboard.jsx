@@ -630,7 +630,6 @@ const AdminDashboard = ({ isOpen, onClose }) => {
   const tabs = [
     { id: 'projects', label: 'Projects', icon: <FaProjectDiagram />, count: projects.length },
     { id: 'certificates', label: 'Certificates', icon: <FaCertificate />, count: certificates.length },
-    { id: 'gallery', label: 'Gallery', icon: <FaImage />, count: gallery.length },
     { id: 'messages', label: 'Messages', icon: <FaEnvelope />, count: messages.length },
     { id: 'comments', label: 'Comments', icon: <FaComments />, count: comments.length }
   ];
