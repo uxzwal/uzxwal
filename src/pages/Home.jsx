@@ -115,24 +115,28 @@ const Home = () => {
                                 initial={{ opacity: 0, y: 15 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.4, delay: 0.6 + index * 0.04 }}
-                                whileHover={{ 
-                                    y: -8, 
-                                    scale: 1.08,
-                                    rotateX: 10,
-                                    rotateY: -10,
-                                    boxShadow: `0 15px 30px rgba(0, 0, 0, 0.6), 0 0 20px ${handle.glow}40`
-                                }}
-                                className="group relative flex flex-col items-center justify-center p-3 rounded-xl border dark:border-white/10 border-slate-200 dark:bg-[#070708]/85 bg-white backdrop-blur-md transition-all duration-300 dark:shadow-[0_4px_12px_rgba(0,0,0,0.5)] shadow-md text-slate-400 dark:text-slate-300 hover:text-white dark:hover:border-cyan-400 hover:border-cyan-500 cursor-pointer"
+                                className="group relative flex flex-col items-center justify-center p-3 rounded-xl border dark:border-white/10 border-slate-200 dark:bg-[#070708]/85 bg-white backdrop-blur-md transition-all duration-300 dark:shadow-[0_4px_12px_rgba(0,0,0,0.5)] shadow-md text-slate-400 dark:text-slate-300 hover:text-white cursor-pointer"
                                 style={{
                                     transformStyle: 'preserve-3d',
-                                    perspective: '1000px'
+                                    perspective: '1000px',
+                                    transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)'
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.transform = 'translateY(-6px) scale(1.06) rotateX(8deg) rotateY(-8deg)';
+                                    e.currentTarget.style.boxShadow = `0 12px 24px rgba(0, 0, 0, 0.6), 0 0 16px ${handle.glow}50`;
+                                    e.currentTarget.style.borderColor = handle.glow;
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.transform = '';
+                                    e.currentTarget.style.boxShadow = '';
+                                    e.currentTarget.style.borderColor = '';
                                 }}
                             >
                                 <div 
                                     className="text-2xl mb-1.5 transition-transform duration-300 group-hover:scale-110"
                                     style={{ 
                                         color: handle.color,
-                                        filter: `drop-shadow(0 0 6px ${handle.glow}60)`
+                                        filter: `drop-shadow(0 0 5px ${handle.glow}50)`
                                     }}
                                 >
                                     {handle.icon}
