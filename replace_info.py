@@ -10,7 +10,7 @@ replacements = {
     "zainahmadf28": "uxzwal",
     "zain.ahmadf": "uxzwal",
     "zainahmad.f": "uxzwal",
-    "www.zainahmadfahrezi.me": "uxzwal.github.io/uzxwal",
+    "www.zainahmadfahrezi.me": "uxzwal.dev",
     "ZAINFIX": "id-card",
     "zain-ahmad-fahrezi-7a8a912a7": "uxzwal",
     "Junior Web Developer": "DevOps Engineer",

@@ -9,7 +9,7 @@ const Preloader = ({ onFinished }) => {
   const [showContent, setShowContent] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
   const [isAssetLoaded, setIsAssetLoaded] = useState(false);
-  const fullText = "uxzwal.github.io/uzxwal";
+  const fullText = "uxzwal.dev";
 
   const handleAssetLoad = () => {
     setIsAssetLoaded(true);
@@ -102,7 +102,7 @@ const Preloader = ({ onFinished }) => {
                 <a href="https://www.linkedin.com/in/uxzwal/" target="_blank" rel="noopener noreferrer" className="dark:hover:text-[#00ffdc] hover:text-cyan-600 transition-all duration-300 transform hover:scale-110">
                   <Linkedin size={32} />
                 </a>
-                <a href="https://uxzwal.github.io/uzxwal" target="_blank" rel="noopener noreferrer" className="dark:hover:text-[#00ffdc] hover:text-cyan-600 transition-all duration-300 transform hover:scale-110">
+                <a href="https://uxzwal.dev" target="_blank" rel="noopener noreferrer" className="dark:hover:text-[#00ffdc] hover:text-cyan-600 transition-all duration-300 transform hover:scale-110">
                   <Instagram size={32} />
                 </a>
               </motion.div>

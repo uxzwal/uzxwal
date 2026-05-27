@@ -187,7 +187,7 @@ const Contact = () => {
     {
       name: 'Portfolio',
       icon: <FaGlobe />,
-      url: 'https://uxzwal.github.io/uzxwal',
+      url: 'https://uxzwal.dev',
       color: 'from-cyan-600 to-teal-700',
       hoverColor: 'hover:shadow-cyan-500/25'
     }
