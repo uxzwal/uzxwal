@@ -2,7 +2,7 @@
 
 An immersive, high-performance 3D portfolio and interactive infrastructure dashboard representing **Ujjwal Kumar**, DevOps Engineer. Designed with a sleek, futuristic dark aesthetic, vibrant glowing transitions, and state-of-the-art micro-interactions.
 
-Live Demo: [https://uxzwal.github.io/uzxwal/](https://uxzwal.github.io/uzxwal/)
+Live Demo: [https://uxzwal.dev](https://uxzwal.dev)
 
 ---
 
