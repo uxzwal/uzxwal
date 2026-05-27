@@ -27,7 +27,7 @@ const Main = () => {
 // Render komponen Main ke dalam DOM
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename="/uzxwal">
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <ThemeProvider>
         <Main />
       </ThemeProvider>
