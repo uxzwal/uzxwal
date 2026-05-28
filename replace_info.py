@@ -2,7 +2,6 @@ import os
 import re
 
 replacements = {
-    "Ujjwal": "Ujjwal Kumar",
     "Zain Ahmad": "Ujjwal Kumar",
     "zainahmadfahrezi": "uxzwal",
     "zain-portofolio": "uzxwal",
