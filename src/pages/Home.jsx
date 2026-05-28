@@ -11,7 +11,6 @@ import Spline from '@splinetool/react-spline';
 import { AnimatedGradientTextDemo } from '../components/AnimatedGradientTextDemo';
 import GradientText from '../components/GradientText';
 import TextGenerateEffect from "../components/text-generate-effect";
-import Lanyard from '../components/Lanyard/Lanyard';
 import { VelocityScroll } from '../components/VelocityScroll';
 import { ButtonMovingBorder } from '../components/MovingBorderButton';
 import ProjectSection from '../components/ProjectSection';
@@ -136,15 +135,6 @@ const Home = () => {
                             </a>
                         ))}
                     </div>
-                </div>
-
-                {/* 3. Render Lanyard secara kondisional */}
-                <div className="hidden lg:flex flex-1 justify-center h-[600px] w-full order-first lg:order-none">
-                    {is3dEnabled && (
-                        <ErrorBoundary fallback={<div className="flex items-center justify-center text-slate-400 text-sm font-cascadia border border-slate-800/30 rounded-2xl w-full h-[500px]">3D visualizer loading error</div>}>
-                            <Lanyard position={[0, 0, 15]} gravity={[0, -40, 0]} fov={18} transparent={true} />
-                        </ErrorBoundary>
-                    )}
                 </div>
             </section>
 

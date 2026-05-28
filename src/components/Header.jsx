@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { FaShieldAlt, FaSun, FaMoon } from 'react-icons/fa';
-import bangzenLogo from '../assets/images/BGZENBGIJObulat.png';
 import { useNavbar } from '../contexts/NavbarContext';
 import { useTheme } from '../contexts/ThemeContext';
 import { useAdmin } from '../contexts/AdminContext';
@@ -185,8 +184,7 @@ const Header = () => {
                 {/* --- MOBILE HEADER --- */}
                 <div className="w-full flex items-center justify-between md:hidden">
                   {/* Mobile: Brand Logo & Text (Left) */}
-                  <a href="/" onClick={(e) => handleNavClick(e, '#home')} className="flex items-center gap-3">
-                    <img src={bangzenLogo} alt="Bangzen Logo" className="h-12 w-12 flex-shrink-0" />
+                  <a href="/" onClick={(e) => handleNavClick(e, '#home')}>
                     <div>
                       <h1 className="font-moderniz text-sm dark:text-[#00ffdc] text-slate-800 whitespace-nowrap">Ujjwal Kumar</h1>
                       <p className="font-moderniz text-[9px] dark:text-[#00ffdc] text-slate-600" style={{ textShadow: 'none' }}>
@@ -212,9 +210,8 @@ const Header = () => {
                   <a
                     href="/"
                     onClick={(e) => handleNavClick(e, '#home')}
-                    className="justify-self-center flex items-center gap-3"
+                    className="justify-self-center"
                   >
-                    <img src={bangzenLogo} alt="Bangzen Logo" className="h-12 w-12" />
                     <div className="block">
                       <h1 className="font-moderniz text-base dark:text-[#00ffdc] text-slate-800">Ujjwal Kumar</h1>
                       <p className="font-moderniz text-[10px] dark:text-[#00ffdc] text-slate-600" style={{ textShadow: 'none' }}>
