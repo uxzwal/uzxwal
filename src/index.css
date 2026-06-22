@@ -20,36 +20,42 @@
 @layer base {
   /* --- CSS VARIABLES FOR THEME --- */
   :root {
-    --bg-primary: #ffffff; /* Light Mode Background */
-    --text-primary: #0f172a; /* Light Mode Text (Slate-950) */
-    --text-secondary: #475569; /* Light Mode Text Secondary (Slate-600) */
-    --card-bg: #f8fafc; /* Light Mode Card (Slate-50) */
-    --card-border: #e2e8f0; /* Light Mode Border (Slate-200) */
-    --accent: #06b6d4; /* Cyan-500 */
-    --accent-glow: rgba(6, 182, 212, 0.5);
+    --bg-primary: #000000;
+    --text-primary: #a6a6a6;
+    --text-secondary: #808080;
+    --text-inverse: #f3f3f3;
+    --card-bg: #000000;
+    --card-border: #e5e7eb;
+    --accent: #f3f3f3;
+    --accent-glow: rgba(243, 243, 243, 0.5);
   }
 
   /* DARK MODE OVERRIDES */
   .dark {
-    --bg-primary: #000000; /* Pure Black Background */
-    --text-primary: #ffffff;
-    --text-secondary: #a1a1aa; /* Zinc-400 */
-    --card-bg: rgba(18, 18, 18, 0.85); /* Solid dark carbon card */
-    --card-border: rgba(255, 255, 255, 0.08);
-    --accent: #00ffdc; /* Keep beautiful cyan glow accents */
+    --bg-primary: #000000;
+    --text-primary: #a6a6a6;
+    --text-secondary: #808080;
+    --text-inverse: #f3f3f3;
+    --card-bg: #000000;
+    --card-border: #e5e7eb;
+    --accent: #f3f3f3;
   }
 
   body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: '__ppSemiBold_e86be0', '__ppSemiBold_Fallback_e86be0', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 27px;
   }
   .font-poppins {
-    font-family: 'Poppins', sans-serif;
+    font-family: '__ppSemiBold_e86be0', '__ppSemiBold_Fallback_e86be0', sans-serif;
   }
 
   .font-cascadia {
-    font-family: 'Cascadia Code', monospace;
+    font-family: '__ppSemiBold_e86be0', '__ppSemiBold_Fallback_e86be0', monospace;
   }
 }
 
