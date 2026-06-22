@@ -47,9 +47,9 @@ homeBtn.addEventListener("click", () => {
     document.querySelector("section.active").classList.remove("active", "fade-out");
     document.querySelector("#home").classList.add("active");
     requestAnimationFrame(() => window.scrollTo(0, 0));
-    
+
     // If navbar is open, close it
-    if(document.querySelector(".header").classList.contains("active")) {
+    if (document.querySelector(".header").classList.contains("active")) {
         toggleNavbar();
         document.body.classList.remove("hide-scrolling");
     }
@@ -105,15 +105,15 @@ tabsContainer.addEventListener("click", (e) => {
 
 /* Blog Search Functionality */
 document.addEventListener("DOMContentLoaded", function () {
-const searchInput = document.getElementById("blogSearch");
-const blogPosts = document.querySelectorAll(".blog-post");
+    const searchInput = document.getElementById("blogSearch");
+    const blogPosts = document.querySelectorAll(".blog-post");
 
-if (searchInput) {
-    searchInput.addEventListener("input", function () {
-        const query = this.value.toLowerCase();
-        blogPosts.forEach(post => {
-        const text = post.innerText.toLowerCase();
-        post.style.display = text.includes(query) ? "block" : "none";
+    if (searchInput) {
+        searchInput.addEventListener("input", function () {
+            const query = this.value.toLowerCase();
+            blogPosts.forEach(post => {
+                const text = post.innerText.toLowerCase();
+                post.style.display = text.includes(query) ? "block" : "none";
             });
         });
     }
@@ -157,19 +157,19 @@ function portfolioItemDetails(portfolioItem) {
 
 // Block bots
 const badParams = ["ref", "utm_source", "utm_medium", "utm_campaign", "fbclid", "gclid", "yclid", "mc_cid", "mc_eid"];
-  const url = new URL(window.location.href);
-  let changed = false;
+const url = new URL(window.location.href);
+let changed = false;
 
-  badParams.forEach(p => {
+badParams.forEach(p => {
     if (url.searchParams.has(p)) {
-      url.searchParams.delete(p);
-      changed = true;
+        url.searchParams.delete(p);
+        changed = true;
     }
-  });
+});
 
-  if (changed) {
+if (changed) {
     window.location.href = url.origin + url.pathname + (url.searchParams.toString() ? "?" + url.searchParams.toString() : "");
-  }
+}
 
 /* Typing animation - using Typed.js (Credit: https://mattboldt.github.io/typed.js/) */
 var typed = new Typed(".typing-text", {
