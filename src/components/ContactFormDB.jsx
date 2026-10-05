@@ -101,7 +101,7 @@ const ContactFormDB = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              placeholder="iamkashyup@gmail.com"
+              placeholder="uxzwal.dev@gmail.com"
               className="w-full px-4 py-3 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
             />
           </div>
@@ -201,8 +201,8 @@ const ContactFormDB = () => {
 
         <p className="text-center text-slate-500 text-sm mt-6">
           Or reach me directly at{' '}
-          <a href="mailto:iamkashyup@gmail.com" className="text-cyan-400 hover:text-cyan-300 transition-colors">
-            iamkashyup@gmail.com
+          <a href="mailto:uxzwal.dev@gmail.com" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+            uxzwal.dev@gmail.com
           </a>
         </p>
       </motion.div>

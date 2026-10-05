@@ -155,7 +155,7 @@ export default class Home extends Page {
     const subject = encodeURIComponent("Portfolio Contact");
     const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nMessage:\n${message}`);
     
-    window.location.href = `mailto:iamkashyup@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:uxzwal.dev@gmail.com?subject=${subject}&body=${body}`;
   }
 
   removeEventListeners() {

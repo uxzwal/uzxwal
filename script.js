@@ -173,7 +173,7 @@ if (changed) {
 
 /* Typing animation - using Typed.js (Credit: https://mattboldt.github.io/typed.js/) */
 var typed = new Typed(".typing-text", {
-    strings: ["DevOps Engineer", "Cloud Enthusiast", "Linux Administrator"],
+    strings: ["BCA Student", "Backend Developer", "DevOps Enthusiast"],
     loop: true,
     typeSpeed: 50,
     backSpeed: 64,
